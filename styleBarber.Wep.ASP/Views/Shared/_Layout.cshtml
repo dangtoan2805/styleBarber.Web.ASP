@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="shortcut icon" href="~/Images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="~/Images/apple-touch-icon.png">
+    @Styles.Render("~/Content/css")
+    @RenderSection("css", required: false)
+</head>
+<body class="barber_version">
+    <!--Predloader-->
+    @RenderPage("_Preloader.cshtml")
+    <!--Alter-->
+    <div class="top-add alert alert-light alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Success!</strong> This alert box could indicate a successful or positive action.
+    </div>
+    <!--Header-->
+    @RenderPage("_Header.cshtml")
+    <!--Main-->
+    @RenderBody()
+    <!--Scroll to Top-->
+    <a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
+    <!--Scripts-->
+    @Scripts.Render("~/bundles/jquery-1")
+    @Scripts.Render("~/bundles/bootstrap-4.1")
+    @Scripts.Render("~/bundles/main")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
