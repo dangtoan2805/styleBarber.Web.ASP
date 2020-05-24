@@ -905,7 +905,7 @@ a img.aligncenter {
 }
 
 .parallax-inner-bg{
-	background: url(uploads/parallax_20.jpg) no-repeat top center;
+	background: url(../Uploads/parallax_20.jpg) no-repeat top center;
 	background-size: cover;
 	background-attachment: fixed;
 }
@@ -2356,10 +2356,10 @@ select.mobile-device {
     Inner Pages
 -------------------------------------------------------------------*/
 
-.all-page-bar{
-	background: url("uploads/barber_all.jpg") no-repeat center;
-	background-size: cover;
-	position: relative;
+.all-page-bar {
+    background: url("/Uploads/barber_all.jpg") no-repeat center;
+    background-size: cover;
+    position: relative;
 }
 
 .all-page-bar::before{
