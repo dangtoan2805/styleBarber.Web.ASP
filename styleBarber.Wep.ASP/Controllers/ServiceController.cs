@@ -13,5 +13,17 @@ namespace styleBarber.Wep.ASP.Controllers
         {
             return View();
         }
+        public ActionResult Barbers()
+        {
+            return View();
+        }
+        public ActionResult Appointment()
+        {
+            return View();
+        }
+        public ActionResult Services()
+        {
+            return View();
+        }
     }
 }

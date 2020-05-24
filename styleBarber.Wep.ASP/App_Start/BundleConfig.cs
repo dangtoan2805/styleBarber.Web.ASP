@@ -28,6 +28,7 @@ namespace styleBarber.Wep.ASP
                                         "~/Content/versions.css",
                                         "~/Content/responsive.css",
                                         "~/Content/custom.css"));
+            bundles.Add(new ScriptBundle("~/bundles/map").Include("~/Scripts/map.js"));
 
         }
 
