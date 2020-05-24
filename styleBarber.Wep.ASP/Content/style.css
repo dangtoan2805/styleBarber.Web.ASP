@@ -2356,10 +2356,10 @@ select.mobile-device {
     Inner Pages
 -------------------------------------------------------------------*/
 
-.all-page-bar {
-    background: url("/Uploads/barber_all.jpg") no-repeat center;
-    background-size: cover;
-    position: relative;
+.all-page-bar{
+	background: url("../Uploads/barber_all.jpg") no-repeat center;
+	background-size: cover;
+	position: relative;
 }
 
 .all-page-bar::before{
