@@ -1,4 +1,5 @@
-﻿using System;
+﻿using styleBarber.Wep.ASP.EF;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,11 @@ namespace styleBarber.Wep.ASP.Controllers
 {
     public class HomeController : Controller
     {
+        private BarberContext _context = new BarberContext();
         public ActionResult Index()
         {
-            return View();
+            var data = _context.Barbers.ToList();
+            return View(data);
         }
 
         public ActionResult About()
