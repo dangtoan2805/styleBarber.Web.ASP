@@ -16,7 +16,7 @@ namespace styleBarber.Wep.ASP
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Service", action = "Barbers", id = UrlParameter.Optional }
             );
         }
     }

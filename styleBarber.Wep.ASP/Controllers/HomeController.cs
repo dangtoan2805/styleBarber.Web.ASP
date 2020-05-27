@@ -1,4 +1,6 @@
 ﻿using styleBarber.Wep.ASP.EF;
+using styleBarber.Wep.ASP.Entities;
+using styleBarber.Wep.ASP.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +14,8 @@ namespace styleBarber.Wep.ASP.Controllers
         private BarberContext _context = new BarberContext();
         public ActionResult Index()
         {
-            var data = _context.Barbers.ToList();
-            return View(data);
+           
+            return View();
         }
 
         public ActionResult About()
@@ -25,8 +27,16 @@ namespace styleBarber.Wep.ASP.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
 
+            
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult SendContact(ContactVM vM)
+
+        {
+            _context.Contacts.Add(new Contact { FirstName = vM.FirstName, LastName = vM.LastName , Email = vM.Email, Phone = vM.Phone, Note = vM.Note}) ;
             return View();
         }
     }

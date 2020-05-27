@@ -15,7 +15,7 @@ namespace styleBarber.Wep.ASP.Entities
         [MaxLength(50)]
         public string Name { get; set; }
         [MaxLength(350)]
-        public string ServiceDescripton { get; set; }
+        public string ServiceDescription { get; set; }
         public int Price { get; set; }
     }
 }
