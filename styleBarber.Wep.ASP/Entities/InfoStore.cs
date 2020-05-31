@@ -17,7 +17,6 @@ namespace styleBarber.Wep.ASP.Entities
         [MaxLength(350)]
         public string Mission { get; set; }
         [MaxLength(350)]
-        public string Reason { get; set; }
-        
+        public string Reason { get; set; }   
     }
 }

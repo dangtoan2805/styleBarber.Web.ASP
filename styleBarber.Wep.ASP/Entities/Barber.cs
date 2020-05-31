@@ -21,8 +21,8 @@ namespace styleBarber.Wep.ASP.Entities
         [MaxLength(100)]
         public string Email { get; set; }
         [MaxLength(100)]
-        public string Twiter { get; set; }
+        public string Twitter { get; set; }
         //Nav 
-        public ICollection<Calendar> Calendars { get; set; }
+        public ICollection<Appointment> Appointments { get; set; }
     }
 }

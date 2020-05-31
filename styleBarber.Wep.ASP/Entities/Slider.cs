@@ -11,6 +11,6 @@ namespace styleBarber.Wep.ASP.Entities
         [MaxLength(50)]
         public string Title { get; set; }
         [MaxLength(250)]
-        public string Content { get; set; }
+        public string SliderDescription { get; set; }
     }
 }

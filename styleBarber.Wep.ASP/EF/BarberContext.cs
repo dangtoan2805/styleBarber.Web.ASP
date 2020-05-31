@@ -13,19 +13,14 @@ namespace styleBarber.Wep.ASP.EF
 
         public DbSet<Barber> Barbers { get; set; }
         public DbSet<Appointment> Appointments {get;set;}
+        public DbSet<AppointmentDetail> AppointmentDetails { get; set; }
         public DbSet<Calendar> Calendars { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<InfoStore> InfoStores { get; set; }
         public DbSet<Reviewer> Reviewers { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<Slider> Sliders { get; set; }
-        public DbSet<StyleHair> StyleHair { get; set; }
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            //Using Fulent API make relationship One to Zero || One between Calendar and Appointment
-            modelBuilder.Entity<Calendar>().HasOptional(ca => ca.Appointment).WithRequired(ca => ca.Calendar);
-        }
+        public DbSet<StyleHair> StyleHair  { get; set; }
 
 
 

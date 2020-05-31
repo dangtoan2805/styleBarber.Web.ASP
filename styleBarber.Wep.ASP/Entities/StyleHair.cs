@@ -11,6 +11,6 @@ namespace styleBarber.Wep.ASP.Entities
         [MaxLength(25)]
         public string Image { get; set; }
         [MaxLength(350)]
-        public string Content { get; set; }
+        public string StyleDescription { get; set; }
     }
 }

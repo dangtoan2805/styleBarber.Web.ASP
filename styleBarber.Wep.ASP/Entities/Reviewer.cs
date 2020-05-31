@@ -17,6 +17,6 @@ namespace styleBarber.Wep.ASP.Entities
         [MaxLength(50)]
         public string Job { get; set; }
         [MaxLength(350)]
-        public string Content { get; set; }
+        public string Review { get; set; }
     }
 }

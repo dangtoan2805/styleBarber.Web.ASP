@@ -456,6 +456,9 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Xml.XPath.XmlDocument, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Xml.XPath.XmlDocument.4.3.0\lib\net46\System.Xml.XPath.XmlDocument.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -479,6 +482,7 @@
     <Compile Include="Dao\BarberDao.cs" />
     <Compile Include="EF\BarberContext.cs" />
     <Compile Include="Entities\Appointment.cs" />
+    <Compile Include="Entities\AppointmentDetail.cs" />
     <Compile Include="Entities\Barber.cs" />
     <Compile Include="Entities\Calendar.cs" />
     <Compile Include="Entities\Contact.cs" />
