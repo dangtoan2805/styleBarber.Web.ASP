@@ -1,7 +1,5 @@
-
 (function($) {
     "use strict";
-
 	 /* ==============================================
     Fixed menu
     =============================================== */
@@ -11,7 +9,8 @@
 			$('.top-navbar').addClass('fixed-menu');
 		} else {
 			$('.top-navbar').removeClass('fixed-menu');
-		}
+        }
+
 	});
 	
     /* ==============================================
@@ -19,10 +18,12 @@
     =============================================== */
 
     $(window).load(function() {
-        $("#preloader").on(500).fadeOut();
-        $(".preloader").on(600).fadeOut("slow");
+        $("#preloader").on(10).fadeOut();
+        $(".preloader").on(10).fadeOut("slow");
+
     });
-	
+
+
 	/* ==============================================
 		Scroll to top  
 	============================================== */
@@ -53,23 +54,23 @@
      FUN FACTS -->
      =============================================== */
 
-    function count($this) {
-        var current = parseInt($this.html(), 10);
-        current = current + 50; /* Where 50 is increment */
-        $this.html(++current);
-        if (current > $this.data('count')) {
-            $this.html($this.data('count'));
-        } else {
-            setTimeout(function() {
-                count($this)
-            }, 30);
-        }
-    }
-    $(".stat_count, .stat_count_download").each(function() {
-        $(this).data('count', parseInt($(this).html(), 10));
-        $(this).html('0');
-        count($(this));
-    });
+    //function count($this) {
+    //    var current = parseInt($this.html(), 10);
+    //    current = current + 50; /* Where 50 is increment */
+    //    $this.html(++current);
+    //    if (current > $this.data('count')) {
+    //        $this.html($this.data('count'));
+    //    } else {
+    //        setTimeout(function() {
+    //            count($this)
+    //        }, 30);
+    //    }
+    //}
+    //$(".stat_count, .stat_count_download").each(function() {
+    //    $(this).data('count', parseInt($(this).html(), 10));
+    //    $(this).html('0');
+    //    count($(this));
+    //});
 	
 	/* ==============================================
      Full width Slider -->
@@ -97,7 +98,9 @@
 			$('.owl-item').not('.cloned').eq(item).find('h2').addClass('animated zoomIn');			
 			$('.owl-item').not('.cloned').eq(item).find('p').addClass('animated fadeInUp');
 			$('.owl-item').not('.cloned').eq(item).find('.butn').addClass('animated zoomIn');
-		});
+        });
+
+
 	});
 
     /* ==============================================
@@ -105,42 +108,6 @@
      =============================================== */
     $('[data-toggle="tooltip"]').tooltip()
     $('[data-toggle="popover"]').popover()
-
-    /* ==============================================
-     CONTACT -->
-     =============================================== */
-    jQuery(document).ready(function() {
-        $('#contactform').submit(function() {
-            var action = $(this).attr('action');
-            $("#message").slideUp(750, function() {
-                $('#message').hide();
-                $('#submit')
-                    .after('<img src="images/ajax-loader.gif" class="loader" />')
-                    .attr('disabled', 'disabled');
-                $.post(action, {
-                        first_name: $('#first_name').val(),
-                        last_name: $('#last_name').val(),
-                        email: $('#email').val(),
-                        phone: $('#phone').val(),
-                        select_service: $('#select_service').val(),
-                        select_price: $('#select_price').val(),
-                        comments: $('#comments').val(),
-                        verify: $('#verify').val()
-                    },
-                    function(data) {
-                        document.getElementById('message').innerHTML = data;
-                        $('#message').slideDown('slow');
-                        $('#contactform img.loader').fadeOut('slow', function() {
-                            $(this).remove()
-                        });
-                        $('#submit').removeAttr('disabled');
-                        if (data.match('success') != null) $('#contactform').slideUp('slow');
-                    }
-                );
-            });
-            return false;
-        });
-    });
 
     /* ==============================================
      CODE WRAPPER -->
@@ -184,5 +151,44 @@
             transition: 'all .3s'
         });
     });
+
+    /* ==============================================
+     Reviewer -->
+    =============================================== */
+    //$.ajax({
+        //    url: '/Home/Reviewer',
+        //    type: "GET",
+        //    contentType: "application/json;charset=utf-8",
+        //    dataType: "json",
+        //    success: function (data) {
+        //        let containter = $('#list-testimonials .owl-stage');
+        //        data.forEach(d => {
+        //            let str =
+        //                ` <div class="owl-item">
+        //                    <div class="testimonial clearfix">
+        //                        <div class="testi-meta">
+        //                            <i class="fa fa-quote-right"></i>
+        //                            <img src="../Uploads/testi_01.png" alt="" class="img-responsive alignright">
+        //                            <h4>${d.Name} <small>- ${d.Job}</small></h4>
+        //                        </div>
+        //                        <div class="desc">
+        //                            <h3>Wonderful Support!</h3>
+        //                            <p class="lead">${d.Content}</p>
+        //                        </div>
+        //                    </div>
+        //                   </div>
+        //              `;
+        //            $(str).appendTo(containter);
+        //        });
+        //        $('#list-testimonials').load(" #list-testimonials");
+
+
+        //    },
+        //    error: function (er) {
+        //        console.log(er);
+        //    }
+        //});
+
+
 
 })(jQuery);

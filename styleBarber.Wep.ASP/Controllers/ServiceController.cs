@@ -1,4 +1,5 @@
-﻿using System;
+﻿using styleBarber.Wep.ASP.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -19,6 +20,12 @@ namespace styleBarber.Wep.ASP.Controllers
         }
         public ActionResult Services()
         {
+            return View();
+        }
+
+        public ActionResult SendAppointment(AppointmentVM appointmentVM)
+        {
+
             return View();
         }
 

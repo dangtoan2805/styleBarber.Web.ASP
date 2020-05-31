@@ -5,7 +5,6 @@ namespace styleBarber.Wep.ASP.Entities
 {
     public class Calendar
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Key]
         public int ID { get; set; }       
         [MaxLength(15)]

@@ -9,59 +9,25 @@
 
         <div class="row">
             <div class="col-md-12 col-sm-12">
-                <div class="testi-carousel owl-carousel owl-theme">
-                    <div class="testimonial clearfix">
-                        <div class="testi-meta">
-                            <i class="fa fa-quote-right"></i>
-                            <img src="~/Uploads/testi_01.png" alt="" class="img-responsive alignright">
-                            <h4>James Fernando <small>- Manager of Racer</small></h4>
-                        </div>
-                        <div class="desc">
-                            <h3>Wonderful Support!</h3>
-                            <p class="lead">They have got my project on time with the competition with a sed highly skilled, and experienced & professional team.</p>
-                        </div>
-                        <!-- end testi-meta -->
-                    </div>
-                    <!-- end testimonial -->
-                    <div class="testimonial clearfix">
-                        <div class="testi-meta">
-                            <i class="fa fa-quote-right"></i>
-                            <img src="~/Uploads/testi_02.png" alt="" class="img-responsive alignright">
-                            <h4>Jacques Philips <small>- Designer</small></h4>
-                        </div>
-                        <div class="desc">
-                            <h3>Awesome Services!</h3>
-                            <p class="lead">Explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you completed.</p>
-                        </div>
-                        <!-- end testi-meta -->
-                    </div>
-                    <!-- end testimonial -->
-                    <div class="testimonial clearfix">
-                        <div class="testi-meta">
-                            <i class="fa fa-quote-right"></i>
-                            <img src="~/Uploads/testi_03.png" alt="" class="img-responsive alignright">
-                            <h4>Venanda Mercy <small>- Newyork City</small></h4>
-                        </div>
-                        <div class="desc">
-                            <h3>Great & Talented Team!</h3>
-                            <p class="lead">The master-builder of human happines no one rejects, dislikes avoids pleasure itself, because it is very pursue pleasure. </p>
-                        </div>
-                        <!-- end testi-meta -->
-                    </div>
-                    <!-- end testimonial -->
-                    <div class="testimonial clearfix">
-                        <div class="testi-meta">
-                            <i class="fa fa-quote-right"></i>
-                            <img src="uploads/testi_03.png" alt="" class="img-responsive alignright">
-                            <h4>Venanda Mercy <small>- Newyork City</small></h4>
-                        </div>
-                        <div class="desc">
-                            <h3> Great & Talented Team!</h3>
-                            <p class="lead">The master-builder of human happines no one rejects, dislikes avoids pleasure itself, because it is very pursue pleasure. </p>
-                        </div>
-                        <!-- end testi-meta -->
-                    </div>
-                    <!-- end testimonial -->
+                <div id="list-testimonials" class="testi-carousel owl-carousel owl-theme">
+                    @{
+                        if (ViewBag.Reviewer != null)
+                        {
+                            foreach (var i in ViewBag.Reviewer)
+                            {
+                                <div class="testimonial clearfix">
+                                    <div class="testi-meta">
+                                        <i class="fa fa-quote-right"></i>
+                                        <img src="~/Uploads/testi_01.png" alt="" class="img-responsive alignright">
+                                        <h4>@i.Name <small>- @i.Job</small></h4>
+                                    </div>
+                                    <div class="desc">
+                                        <p class="lead">@i.Content</p>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    }
                 </div><!-- end carousel -->
             </div><!-- end col -->
         </div><!-- end row -->

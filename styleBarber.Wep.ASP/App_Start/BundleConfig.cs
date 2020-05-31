@@ -19,15 +19,16 @@ namespace styleBarber.Wep.ASP
 
             bundles.Add(new ScriptBundle("~/bundles/jquery-1").Include("~/Scripts/jquery-1.12.4.min.js"));
             bundles.Add(new ScriptBundle("~/bundles/bootstrap-4.1").Include("~/Scripts/bootstrap-4.1.1.min.js.map"));
+
             bundles.Add(new ScriptBundle("~/bundles/main").Include(
                                         "~/Scripts/main.js",
                                         "~/Scripts/custom.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                                         "~/Content/bootstrap.min.css",
                                         "~/Content/style.css",
                                         "~/Content/versions.css",
-                                        "~/Content/responsive.css",
-                                        "~/Content/custom.css"));
+                                        "~/Content/responsive.css"));
             bundles.Add(new ScriptBundle("~/bundles/map").Include("~/Scripts/map.js"));
 
         }

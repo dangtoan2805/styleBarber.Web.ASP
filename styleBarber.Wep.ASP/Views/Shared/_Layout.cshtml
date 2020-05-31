@@ -11,22 +11,24 @@
 </head>
 <body class="barber_version">
     <!--Predloader-->
-    @RenderPage("_Preloader.cshtml")
+    @{Html.RenderPartial("_Preloader");}
     <!--Alter-->
     <div class="top-add alert alert-light alert-dismissible">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong>Success!</strong> This alert box could indicate a successful or positive action.
     </div>
     <!--Header-->
-    @RenderPage("_Header.cshtml")
+    @{Html.RenderPartial("_Header");}
     <!--Main-->
-    @RenderBody()
+    <div id="page-content-wrapper">
+        @RenderBody()
+    </div>
     <!--Scroll to Top-->
     <a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
     <!--Scripts-->
     @Scripts.Render("~/bundles/jquery-1")
     @Scripts.Render("~/bundles/bootstrap-4.1")
-    @Scripts.Render("~/bundles/main")  
+    @Scripts.Render("~/bundles/main")
     @RenderSection("scripts", required: false)
 </body>
 </html>

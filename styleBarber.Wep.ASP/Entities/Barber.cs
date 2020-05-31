@@ -11,7 +11,7 @@ namespace styleBarber.Wep.ASP.Entities
         [MaxLength(50)]
         public string Name { get; set; }
         [DefaultValue(false)]
-        public bool LevelJob { get; set; }
+        public bool isFounder { get; set; }
         [MaxLength(25)]
         public string Image { get; set; }
         [MaxLength(350)]

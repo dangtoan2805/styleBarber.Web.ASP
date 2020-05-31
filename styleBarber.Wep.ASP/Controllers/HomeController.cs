@@ -1,8 +1,13 @@
-﻿using styleBarber.Wep.ASP.EF;
+﻿using Microsoft.Ajax.Utilities;
+using Newtonsoft.Json.Linq;
+using styleBarber.Wep.ASP.EF;
+using styleBarber.Wep.ASP.Entities;
+using styleBarber.Wep.ASP.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace styleBarber.Wep.ASP.Controllers
@@ -10,10 +15,12 @@ namespace styleBarber.Wep.ASP.Controllers
     public class HomeController : Controller
     {
         private BarberContext _context = new BarberContext();
+
         public ActionResult Index()
         {
-            var data = _context.Barbers.ToList();
-            return View(data);
+            var list = _context.Reviewers.ToList();
+            ViewBag.Reviewer = list;
+            return View();
         }
 
         public ActionResult About()
@@ -29,5 +36,13 @@ namespace styleBarber.Wep.ASP.Controllers
 
             return View();
         }
+
+        public ActionResult SendContact(ContactVM contact)
+        {
+            return View();
+        }
+
+
+       
     }
 }
