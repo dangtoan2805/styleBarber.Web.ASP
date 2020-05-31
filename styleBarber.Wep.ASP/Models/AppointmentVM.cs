@@ -11,6 +11,8 @@ namespace styleBarber.Wep.ASP.Models
         public string LastName { get; set; }
         public int Phone { get; set; }
         public string Email { get; set; }
+        public string Time { get; set; }
+        public string Note { get; set; }
 
     }
 }

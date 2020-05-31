@@ -18,58 +18,20 @@
         </div><!-- end title -->
 
         <div class="row">
-            <div class="col-md-6">
-                <div class="service-wrap text-center clearfix">
-                    <div class="uptop">
-                        <img src="~/Uploads/barber_service_01.jpg" alt="" class="img-responsive img-rounded alignleft">
-                    </div>
-                    <h4>beard, mustache care</h4>
-                    <p>Etiam materials ut mollis tellus, vel posuere nulla. Etiam sit amet massa sodales aliquam at eget quam. Integer ultricies et magna quis.</p>
-                </div><!-- end issue -->
-
-                <div class="service-wrap text-center clearfix">
-                    <div class="uptop">
-                        <img src="~/Uploads/barber_service_02.jpg" alt="" class="img-responsive img-rounded alignleft">
-                    </div>
-                    <h4>detailed feather cleaning</h4>
-                    <p>Etiam materials ut mollis tellus, vel posuere nulla. Etiam sit amet lacus vitae massa sodales aliquam at eget quam. Integer ultricies et magna quis.</p>
-                </div><!-- end issue -->
-
-                <div class="service-wrap text-center lastchild clearfix">
-                    <div class="uptop">
-                        <img src="~/Uploads/barber_service_03.jpg" alt="" class="img-responsive img-rounded alignleft">
-                    </div>
-                    <h4>facial and skin care</h4>
-                    <p>Etiam materials ut mollis tellus, vel posuere nulla. Etiam sit amet lacus vitae massa sodales aliquam at eget quam. Integer ultricies et magna quis.</p>
-                </div><!-- end issue -->
-            </div><!-- end col -->
-
-            <div class="col-md-6">
-                <div class="service-wrap text-center clearfix">
-                    <div class="uptop">
-                        <img src="~/Uploads/barber_service_04.jpg" alt="" class="img-responsive img-rounded alignleft">
-                    </div>
-                    <h4>studio shots</h4>
-                    <p>Etiam materials ut mollis tellus, vel posuere nulla. Etiam sit amet massa sodales aliquam at eget quam. Integer ultricies et magna quis.</p>
-                </div><!-- end issue -->
-
-                <div class="service-wrap text-center clearfix">
-                    <div class="uptop">
-                        <img src="~/Uploads/barber_service_05.jpg" alt="" class="img-responsive img-rounded alignleft">
-                    </div>
-                    <h4>forming the beard</h4>
-                    <p>Etiam materials ut mollis tellus, vel posuere nulla. Etiam sit amet lacus vitae massa sodales aliquam at eget quam. Integer ultricies et magna quis.</p>
-                </div><!-- end issue -->
-
-                <div class="service-wrap text-center lastchild clearfix">
-                    <div class="uptop">
-                        <img src="~/Uploads/barber_service_06.jpg" alt="" class="img-responsive img-rounded alignleft">
-                    </div>
-                    <h4>hair wash</h4>
-                    <p>Etiam materials ut mollis tellus, vel posuere nulla. Etiam sit amet lacus vitae massa sodales aliquam at eget quam. Integer ultricies et magna quis.</p>
-                </div><!-- end issue -->
-            </div><!-- end col -->
-        </div>
+                @foreach (var s in ViewBag.Services)
+                {
+                    <div class="col-md-6">
+                        <div class="service-wrap text-center clearfix">
+                            <div class="uptop">
+                                <img src="~/Uploads/barber_service_01.jpg" alt="" class="img-responsive img-rounded alignleft">
+                            </div>
+                            <h4>@s.Name</h4>
+                            <p>@s.ServiceDescription.</p>
+                        </div><!-- end issue -->                     
+                     </div>
+                }
+        </div><!-- end col -->
+                
     </div><!-- end container -->
 </div><!-- end section -->
 
