@@ -477,6 +477,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\BarberController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ServiceController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SettingController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StyleHairController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Dao\BarberDao.cs" />
@@ -494,31 +500,59 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202005310941096_init.cs" />
-    <Compile Include="Migrations\202005310941096_init.designer.cs">
-      <DependentUpon>202005310941096_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppointmentVM.cs" />
     <Compile Include="Models\ContactVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\animate-wow.css" />
     <Content Include="Content\animate.css" />
     <Content Include="Content\animate.min.css" />
+    <Content Include="Content\animsition.min.css" />
+    <Content Include="Content\bootstrap-progressbar-3.3.4.min.css" />
     <Content Include="Content\bootstrap-select.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\custom.css" />
     <Content Include="Content\flaticon.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\font-face.css" />
+    <Content Include="Content\fontawesome-all.min.css" />
+    <Content Include="Content\hamburgers.min.css" />
     <Content Include="Content\loading.css" />
+    <Content Include="Content\material-design-iconic-font.min.css" />
     <Content Include="Content\owl.carousel.css" />
+    <Content Include="Content\perfect-scrollbar.css" />
     <Content Include="Content\prettyPhoto.css" />
     <Content Include="Content\responsive.css" />
+    <Content Include="Content\select2.min.css" />
+    <Content Include="Content\slick.css" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\theme.css" />
     <Content Include="Content\versions.css" />
     <Content Include="fonts\Flaticon.svg" />
     <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="fonts\poppins\poppins-v5-latin-100.svg" />
+    <Content Include="fonts\poppins\poppins-v5-latin-100italic.svg" />
+    <Content Include="fonts\poppins\poppins-v5-latin-200.svg" />
+    <Content Include="fonts\poppins\poppins-v5-latin-200italic.svg" />
+    <Content Include="fonts\poppins\poppins-v5-latin-300.svg" />
+    <Content Include="fonts\poppins\poppins-v5-latin-300italic.svg" />
+    <Content Include="fonts\poppins\poppins-v5-latin-500.svg" />
+    <Content Include="fonts\poppins\poppins-v5-latin-500italic.svg" />
+    <Content Include="fonts\poppins\poppins-v5-latin-600.svg" />
+    <Content Include="fonts\poppins\poppins-v5-latin-600italic.svg" />
+    <Content Include="fonts\poppins\poppins-v5-latin-700.svg" />
+    <Content Include="fonts\poppins\poppins-v5-latin-700italic.svg" />
+    <Content Include="fonts\poppins\poppins-v5-latin-800.svg" />
+    <Content Include="fonts\poppins\poppins-v5-latin-800italic.svg" />
+    <Content Include="fonts\poppins\poppins-v5-latin-900.svg" />
+    <Content Include="fonts\poppins\poppins-v5-latin-900italic.svg" />
+    <Content Include="fonts\poppins\poppins-v5-latin-italic.svg" />
+    <Content Include="fonts\poppins\poppins-v5-latin-regular.svg" />
+    <Content Include="fonts\webfonts\fa-brands-400.svg" />
+    <Content Include="fonts\webfonts\fa-regular-400.svg" />
+    <Content Include="fonts\webfonts\fa-solid-900.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\ajax-loader.gif" />
@@ -566,8 +600,117 @@
     <Content Include="Images\prettyPhoto\light_square\default_thumbnail.gif" />
     <Content Include="Images\prettyPhoto\light_square\loader.gif" />
     <Content Include="Images\prettyPhoto\light_square\sprite.png" />
+    <Content Include="Scripts\animsition.min.js" />
+    <Content Include="Scripts\bootstrap-progressbar.min.js" />
+    <Content Include="Scripts\Chart.bundle.min.js" />
+    <Content Include="Scripts\circle-progress.min.js" />
+    <Content Include="Scripts\jquery.counterup.min.js" />
+    <Content Include="Scripts\jquery.waypoints.min.js" />
+    <Content Include="Scripts\main-admin.js" />
     <Content Include="Scripts\main.js" />
-    <None Include="packages.config" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="fonts\poppins\poppins-v5-latin-100.eot" />
+    <Content Include="fonts\poppins\poppins-v5-latin-100.ttf" />
+    <Content Include="fonts\poppins\poppins-v5-latin-100.woff" />
+    <Content Include="fonts\poppins\poppins-v5-latin-100.woff2" />
+    <Content Include="fonts\poppins\poppins-v5-latin-100italic.eot" />
+    <Content Include="fonts\poppins\poppins-v5-latin-100italic.ttf" />
+    <Content Include="fonts\poppins\poppins-v5-latin-100italic.woff" />
+    <Content Include="fonts\poppins\poppins-v5-latin-100italic.woff2" />
+    <Content Include="fonts\poppins\poppins-v5-latin-200.eot" />
+    <Content Include="fonts\poppins\poppins-v5-latin-200.ttf" />
+    <Content Include="fonts\poppins\poppins-v5-latin-200.woff" />
+    <Content Include="fonts\poppins\poppins-v5-latin-200.woff2" />
+    <Content Include="fonts\poppins\poppins-v5-latin-200italic.eot" />
+    <Content Include="fonts\poppins\poppins-v5-latin-200italic.ttf" />
+    <Content Include="fonts\poppins\poppins-v5-latin-200italic.woff" />
+    <Content Include="fonts\poppins\poppins-v5-latin-200italic.woff2" />
+    <Content Include="fonts\poppins\poppins-v5-latin-300.eot" />
+    <Content Include="fonts\poppins\poppins-v5-latin-300.ttf" />
+    <Content Include="fonts\poppins\poppins-v5-latin-300.woff" />
+    <Content Include="fonts\poppins\poppins-v5-latin-300.woff2" />
+    <Content Include="fonts\poppins\poppins-v5-latin-300italic.eot" />
+    <Content Include="fonts\poppins\poppins-v5-latin-300italic.ttf" />
+    <Content Include="fonts\poppins\poppins-v5-latin-300italic.woff" />
+    <Content Include="fonts\poppins\poppins-v5-latin-300italic.woff2" />
+    <Content Include="fonts\poppins\poppins-v5-latin-500.eot" />
+    <Content Include="fonts\poppins\poppins-v5-latin-500.ttf" />
+    <Content Include="fonts\poppins\poppins-v5-latin-500.woff" />
+    <Content Include="fonts\poppins\poppins-v5-latin-500.woff2" />
+    <Content Include="fonts\poppins\poppins-v5-latin-500italic.eot" />
+    <Content Include="fonts\poppins\poppins-v5-latin-500italic.ttf" />
+    <Content Include="fonts\poppins\poppins-v5-latin-500italic.woff" />
+    <Content Include="fonts\poppins\poppins-v5-latin-500italic.woff2" />
+    <Content Include="fonts\poppins\poppins-v5-latin-600.eot" />
+    <Content Include="fonts\poppins\poppins-v5-latin-600.ttf" />
+    <Content Include="fonts\poppins\poppins-v5-latin-600.woff" />
+    <Content Include="fonts\poppins\poppins-v5-latin-600.woff2" />
+    <Content Include="fonts\poppins\poppins-v5-latin-600italic.eot" />
+    <Content Include="fonts\poppins\poppins-v5-latin-600italic.ttf" />
+    <Content Include="fonts\poppins\poppins-v5-latin-600italic.woff" />
+    <Content Include="fonts\poppins\poppins-v5-latin-600italic.woff2" />
+    <Content Include="fonts\poppins\poppins-v5-latin-700.eot" />
+    <Content Include="fonts\poppins\poppins-v5-latin-700.ttf" />
+    <Content Include="fonts\poppins\poppins-v5-latin-700.woff" />
+    <Content Include="fonts\poppins\poppins-v5-latin-700.woff2" />
+    <Content Include="fonts\poppins\poppins-v5-latin-700italic.eot" />
+    <Content Include="fonts\poppins\poppins-v5-latin-700italic.ttf" />
+    <Content Include="fonts\poppins\poppins-v5-latin-700italic.woff" />
+    <Content Include="fonts\poppins\poppins-v5-latin-700italic.woff2" />
+    <Content Include="fonts\poppins\poppins-v5-latin-800.eot" />
+    <Content Include="fonts\poppins\poppins-v5-latin-800.ttf" />
+    <Content Include="fonts\poppins\poppins-v5-latin-800.woff" />
+    <Content Include="fonts\poppins\poppins-v5-latin-800.woff2" />
+    <Content Include="fonts\poppins\poppins-v5-latin-800italic.eot" />
+    <Content Include="fonts\poppins\poppins-v5-latin-800italic.ttf" />
+    <Content Include="fonts\poppins\poppins-v5-latin-800italic.woff" />
+    <Content Include="fonts\poppins\poppins-v5-latin-800italic.woff2" />
+    <Content Include="fonts\poppins\poppins-v5-latin-900.eot" />
+    <Content Include="fonts\poppins\poppins-v5-latin-900.ttf" />
+    <Content Include="fonts\poppins\poppins-v5-latin-900.woff" />
+    <Content Include="fonts\poppins\poppins-v5-latin-900.woff2" />
+    <Content Include="fonts\poppins\poppins-v5-latin-900italic.eot" />
+    <Content Include="fonts\poppins\poppins-v5-latin-900italic.ttf" />
+    <Content Include="fonts\poppins\poppins-v5-latin-900italic.woff" />
+    <Content Include="fonts\poppins\poppins-v5-latin-900italic.woff2" />
+    <Content Include="fonts\poppins\poppins-v5-latin-italic.eot" />
+    <Content Include="fonts\poppins\poppins-v5-latin-italic.ttf" />
+    <Content Include="fonts\poppins\poppins-v5-latin-italic.woff" />
+    <Content Include="fonts\poppins\poppins-v5-latin-italic.woff2" />
+    <Content Include="fonts\poppins\poppins-v5-latin-regular.eot" />
+    <Content Include="fonts\poppins\poppins-v5-latin-regular.ttf" />
+    <Content Include="fonts\poppins\poppins-v5-latin-regular.woff" />
+    <Content Include="fonts\poppins\poppins-v5-latin-regular.woff2" />
+    <Content Include="fonts\webfonts\fa-brands-400.eot" />
+    <Content Include="fonts\webfonts\fa-brands-400.ttf" />
+    <Content Include="fonts\webfonts\fa-brands-400.woff" />
+    <Content Include="fonts\webfonts\fa-brands-400.woff2" />
+    <Content Include="fonts\webfonts\fa-regular-400.eot" />
+    <Content Include="fonts\webfonts\fa-regular-400.ttf" />
+    <Content Include="fonts\webfonts\fa-regular-400.woff" />
+    <Content Include="fonts\webfonts\fa-regular-400.woff2" />
+    <Content Include="fonts\webfonts\fa-solid-900.eot" />
+    <Content Include="fonts\webfonts\fa-solid-900.ttf" />
+    <Content Include="fonts\webfonts\fa-solid-900.woff" />
+    <Content Include="fonts\webfonts\fa-solid-900.woff2" />
+    <Content Include="fonts\Material-Design-Iconic-Font.eot" />
+    <Content Include="fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="Areas\Admin\Views\Shared\_SideBar.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_HeaderAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\Barber\Barbers.cshtml" />
+    <Content Include="Areas\Admin\Views\Barber\BarberDetail.cshtml" />
+    <Content Include="Areas\Admin\Views\Service\Services.cshtml" />
+    <Content Include="Areas\Admin\Views\Service\ServiceDetail.cshtml" />
+    <Content Include="Areas\Admin\Views\StyleHair\StyleHairs.cshtml" />
+    <Content Include="Areas\Admin\Views\StyleHair\StyleHairDetail.cshtml" />
+    <Content Include="Areas\Admin\Views\Setting\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\AppointmentDetail.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\ContactDetail.cshtml" />
     <None Include="packages.config" />
     <None Include="Scripts\bootstrap-4.1.1.min.js.map" />
     <Content Include="fonts\Flaticon.eot" />
@@ -592,9 +735,19 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\map.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\perfect-scrollbar.min.js" />
+    <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\responsive-tabs.js" />
+    <Content Include="Scripts\select2.min.js" />
+    <Content Include="Scripts\slick.min.js" />
+    <Content Include="Scripts\wow.min.js" />
     <Content Include="Uploads\about-bg.jpg" />
     <Content Include="Uploads\about-img.jpg" />
+    <Content Include="Uploads\avatar-01.jpg" />
+    <Content Include="Uploads\avatar-02.jpg" />
+    <Content Include="Uploads\avatar-03.jpg" />
+    <Content Include="Uploads\avatar-04.jpg" />
+    <Content Include="Uploads\avatar-05.jpg" />
     <Content Include="Uploads\barber_01.jpg" />
     <Content Include="Uploads\barber_02.jpg" />
     <Content Include="Uploads\barber_03.jpg" />
@@ -611,6 +764,8 @@
     <Content Include="Uploads\barber_team_01.jpg" />
     <Content Include="Uploads\barber_team_02.jpg" />
     <Content Include="Uploads\barber_team_03.jpg" />
+    <Content Include="Uploads\logo-mini.png" />
+    <Content Include="Uploads\logo-white.png" />
     <Content Include="Uploads\mustache.png" />
     <Content Include="Uploads\parallax_20.jpg" />
     <Content Include="Uploads\slider-img-01.jpg" />
@@ -619,6 +774,7 @@
     <Content Include="Uploads\testi_01.png" />
     <Content Include="Uploads\testi_02.png" />
     <Content Include="Uploads\testi_03.png" />
+    <Content Include="Uploads\Untitled-1.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -639,11 +795,11 @@
     <Content Include="Views\Service\Services.cshtml" />
     <Content Include="Views\Service\Barbers.cshtml" />
     <Content Include="Views\Service\Appointment.cshtml" />
-    <Content Include="Views\Shared\View.cshtml" />
     <Content Include="Views\Shared\_PageBar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -653,11 +809,6 @@
   <ItemGroup>
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202005310941096_init.resx">
-      <DependentUpon>202005310941096_init.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

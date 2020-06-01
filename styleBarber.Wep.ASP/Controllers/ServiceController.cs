@@ -12,13 +12,14 @@ namespace styleBarber.Wep.ASP.Controllers
     {
         private BarberContext _context = new BarberContext();
     
-        // GET: Service
         public ActionResult Appointment()
         {
+            // *********Show List Time ********//
             return View();
         }
         public ActionResult Barbers()
         {
+            //GET: Barbers
             var Barbers = _context.Barbers.Take(6).ToList();
             ViewBag.Barbers = Barbers;
 
@@ -26,6 +27,7 @@ namespace styleBarber.Wep.ASP.Controllers
         }
         public ActionResult Services()
         {
+            //GET: Service
             var Services = _context.Services.Take(6).ToList();
             ViewBag.Services = Services;
             return View();
