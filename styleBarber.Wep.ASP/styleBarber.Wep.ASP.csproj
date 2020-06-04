@@ -703,7 +703,7 @@
     <Content Include="Areas\Admin\Views\Shared\_SideBar.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_HeaderAdmin.cshtml" />
     <Content Include="Areas\Admin\Views\Barber\Barbers.cshtml" />
-    <Content Include="Areas\Admin\Views\Barber\BarberDetail.cshtml" />
+    <Content Include="Areas\Admin\Views\Barber\AddBarber.cshtml" />
     <Content Include="Areas\Admin\Views\Service\Services.cshtml" />
     <Content Include="Areas\Admin\Views\Service\ServiceDetail.cshtml" />
     <Content Include="Areas\Admin\Views\StyleHair\StyleHairs.cshtml" />
@@ -711,6 +711,7 @@
     <Content Include="Areas\Admin\Views\Setting\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Home\AppointmentDetail.cshtml" />
     <Content Include="Areas\Admin\Views\Home\ContactDetail.cshtml" />
+    <Content Include="Areas\Admin\Views\Barber\BarberDetail.cshtml" />
     <None Include="packages.config" />
     <None Include="Scripts\bootstrap-4.1.1.min.js.map" />
     <Content Include="fonts\Flaticon.eot" />
@@ -772,7 +773,7 @@
     <Content Include="Uploads\slider-img-02.jpg" />
     <Content Include="Uploads\slider-img-03.jpg" />
     <Content Include="Uploads\testi_01.png" />
-    <Content Include="Uploads\testi_02.png" />
+    <Content Include="Uploads\barber_001.png" />
     <Content Include="Uploads\testi_03.png" />
     <Content Include="Uploads\Untitled-1.jpg" />
     <Content Include="Web.config" />
