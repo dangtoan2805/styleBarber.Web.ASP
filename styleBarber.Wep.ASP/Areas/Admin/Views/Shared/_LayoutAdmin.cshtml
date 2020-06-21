@@ -26,6 +26,10 @@
     @Scripts.Render("~/bundles/bootstrap-4.1")
     @Scripts.Render("~/bundles/bootstrap-popper")
     @Scripts.Render("~/bundles/vendor")
+    <script>
+        var index = $(`#my-nav`).data('nav');
+        $(`#my-nav li:eq(${index})`).addClass('active');
+    </script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

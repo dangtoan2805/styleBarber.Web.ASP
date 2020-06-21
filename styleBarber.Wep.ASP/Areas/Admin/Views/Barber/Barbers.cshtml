@@ -1,5 +1,6 @@
 ﻿@{
     ViewBag.Title = "Barbers";
+    ViewBag.IndexNav = 1;
 }
 
 <div class="main-content">
@@ -9,8 +10,8 @@
                 <div class="col-6">
                     <form action="/Admin/Barber/TimKiem" method="post">
                         <div>
-                            <input type="text" name="ten" class="from-control" />
-                            <button type="submit" class="btn btn-danger">Seach</button>
+                            <input type="text" name="ten" class="from-control" style="height:37px" />
+                            <button type="submit" class="btn btn-danger">Tim Kiếm</button>
                         </div>
                     </form>
                 </div>
@@ -33,11 +34,11 @@
                     <!-- DATA TABLE -->
                     <div class="table-data__tool">
                         <div class="table-data__tool-left">
-                            <h3 class="title-5">list barbers</h3>
+                            <h3 class="title-5">Danh Sách Nhân Viên</h3>
                         </div>
                         <div class="table-data__tool-right">
                             <a href="/Admin/Barber/AddBarber" class="au-btn au-btn-icon au-btn--green au-btn--small">
-                                <i class="zmdi zmdi-plus"></i>new barbres
+                                <i class="zmdi zmdi-plus"></i>Thêm Nhân Viên
                             </a>
                         </div>
                     </div>
@@ -70,11 +71,11 @@
 
                                             @if (B.isFounder == true)
                                             {
-                                                <span class="block-email">Founder</span>
+                                                <span class="block-email">Người Sáng Lập</span>
                                             }
                                             else
                                             {
-                                                <span class="block-email">Barber</span>
+                                                <span class="block-email">Nhân Viên</span>
 
                                             }
                                         </td>

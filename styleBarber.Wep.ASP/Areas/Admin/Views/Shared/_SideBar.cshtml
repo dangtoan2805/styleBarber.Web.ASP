@@ -1,5 +1,5 @@
 ﻿<!-- HEADER MOBILE-->
-<header class="header-mobile d-block d-lg-none">
+<header  class="header-mobile d-block d-lg-none" >
     <div class="header-mobile__bar">
         <div class="container-fluid">
             <div class="header-mobile-inner">
@@ -61,35 +61,35 @@
     </div>
     <div class="menu-sidebar__content js-scrollbar1">
         <nav class="navbar-sidebar">
-            <ul class="list-unstyled navbar__list">
-                <li class="active has-sub">
+            <ul id="my-nav" class="list-unstyled navbar__list" data-nav="@ViewBag.IndexNav">
+                <li class=" has-sub">
                     <a class="js-arrow" href="~/Admin/Home/Index">
-                        <i class="fas fa-tachometer-alt"></i>Dashboard
+                        <i class="fas fa-tachometer-alt"></i>Tổng Quan
                     </a>
                 </li>
                 <li>
                     <a href="~/Admin/Barber/Barbers">
-                        <i class="fas fa-chart-bar"></i>Barbers
+                        <i class="fas fa-chart-bar"></i>Nhân Viên
                     </a>
                 </li>
                 <li>
                     <a href="~/Admin/Service/Services">
-                        <i class="fas fa-table"></i>Services
+                        <i class="fas fa-table"></i>Dịch Vụ
                     </a>
                 </li>
                 <li>
                     <a href="~/Admin/StyleHair/StyleHairs">
-                        <i class="far fa-check-square"></i>Style Hair
+                        <i class="far fa-check-square"></i>Kiểu Tóc
                     </a>
                 </li>
                 <li>
                     <a href="~/Admin/StyleHair/StyleHairs">
-                        <i  class="fas fa-table"></i>CT Lich
+                        <i  class="fas fa-table"></i>CT Lịch
                     </a>
                 </li>
                 <li>
                     <a href="~/Admin/Setting/Index">
-                        <i class="fas fa-calendar-alt"></i>Setting
+                        <i class="fas fa-calendar-alt"></i>Cài Đặt
                     </a>
                 </li>
             </ul>

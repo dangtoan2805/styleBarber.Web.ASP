@@ -4,36 +4,42 @@
     ViewBag.NamePage = "Services";
 }
 
+@{
+    ViewBag.Title = "Services";
+    ViewBag.NamePage = "Dịch Vụ";
+
+}
 @{ Html.RenderPartial("_PageBar");}
 
 <div id="services" class="section lb">
     <div class="container">
         <div class="section-title row text-center">
             <div class="col-md-8 offset-md-2">
-                <small>WELCOME TO THE OUR BARBER SHOP</small>
-                <h3>OUR SERVICES</h3>
+                <small>Chào Mừng Đến với SMBarber</small>
+                <h3>Dịch Vụ</h3>
                 <hr class="grd1">
-                <p class="lead">Quisque eget nisl id nulla sagittis auctor quis id. Aliquam quis vehicula enim, non aliquam risus. Sed a tellus quis mi rhoncus dignissim.</p>
+                <p class="lead">
+                    SMBarber chuyên về làm đẹp tóc và cung cấp các loại mỹ phẩm chăm sóc tóc.<br>
+                    Thế mạnh SMBarber là các dịch vụ phục hồi tóc hư tổn, tạo kiểu tóc ngắn phù hợp với các bạn sinh viên.
+                </p>
             </div>
         </div><!-- end title -->
 
         <div class="row">
-                @foreach (var s in ViewBag.Services)
-                {
-                    <div class="col-md-6">
-                        <div class="service-wrap text-center clearfix">
-                            <div class="uptop">
-                                <img src="~/Uploads/barber_service_01.jpg" alt="" class="img-responsive img-rounded alignleft">
-                            </div>
-                            <h4>@s.Name</h4>
-                            <p>@s.ServiceDescription.</p>
-                        </div><!-- end issue -->                     
-                     </div>
-                }
+            @foreach (var s in ViewBag.Services)
+            {
+                <div class="col-md-6">
+                    <div class="service-wrap text-center clearfix">
+                        <div class="uptop">
+                            <img src="~/Uploads/barber_service_01.jpg" alt="" class="img-responsive img-rounded alignleft">
+                        </div>
+                        <h4>@s.Name</h4>
+                        <p>@s.ServiceDescription.</p>
+                    </div><!-- end issue -->
+                </div>
+            }
         </div><!-- end col -->
-                
+
     </div><!-- end container -->
 </div><!-- end section -->
-
 @{Html.RenderPartial("_Footer");}
-

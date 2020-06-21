@@ -8,112 +8,85 @@
     </div>
     <div class="card-body card-block">
         <form action="/Admin/Barber/AddBarber" method="post" enctype="multipart/form-data" class="form-horizontal">
-
-
-
             <div class="row form-group">
                 <div class="col col-md-3">
-                    <label for="file-input" class=" form-control-label">Image</label>
+                    <label for="file-input" class=" form-control-label">Hình Ảnh</label>
                 </div>
                 <div class="col-12 col-md-9">
                     <input type="file" id="file-input" name="Image" class="form-control-file">
                 </div>
             </div>
-
-
             <div class="row form-group">
                 <div class="col col-md-3">
-                    <label class=" form-control-label">Radios</label>
+                    <label class=" form-control-label">Chức Vụ</label>
                 </div>
                 <div class="col col-md-9">
                     <div class="form-check">
                         <div class="radio">
                             <label for="radio1" class="form-check-label ">
-                                <input type="radio" id="radio1" name="radios" value="option1" class="form-check-input">Founder
+                                <input type="radio" id="radio1" name="radios" value="option1" class="form-check-input">Người Sáng Lập
                             </label>
                         </div>
                         <div class="radio">
                             <label for="radio2" class="form-check-label ">
-                                <input type="radio" id="radio2" name="radios" value="option2" class="form-check-input">Barber
+                                <input type="radio" id="radio2" name="radios" value="option2" class="form-check-input">Nhân Viên
                             </label>
                         </div>
 
                     </div>
                 </div>
             </div>
-
             <div class="row form-group">
                 <div class="col col-md-3">
-                    <label for="text-input" class=" form-control-label">Name</label>
+                    <label for="text-input" class=" form-control-label">Tên</label>
                 </div>
                 <div class="col-12 col-md-9">
-                    <input type="text" id="text-input" name="Name" placeholder="Text" class="form-control">
-                    <small class="form-text text-muted">This is a help text</small>
+                    <input type="text" id="text-input" name="Name" class="form-control">             
                 </div>
             </div>
-
-
-
-
-
             <div class="row form-group">
                 <div class="col col-md-3">
-                    <label for="textarea-input" class=" form-control-label">Info</label>
+                    <label for="textarea-input" class=" form-control-label">Thông Tin</label>
                 </div>
                 <div class="col-12 col-md-9">
-                    <textarea name="Info" id="textarea-input" rows="9" placeholder="Content..." class="form-control"></textarea>
+                    <textarea name="Info" id="textarea-input" rows="9" placeholder="Nhập Thông Tin..." class="form-control"></textarea>
                 </div>
             </div>
-
-
-
-
-
-
             <div class="row form-group">
                 <div class="col col-md-3">
                     <label for="email-input" class=" form-control-label">Facebook</label>
                 </div>
                 <div class="col-12 col-md-9">
-                    <input type="email" id="email-input" name="LinkFB" placeholder="Enter Facebook" class="form-control">
-                    <small class="help-block form-text">Please enter your Facebook</small>
+                    <input type="email" id="email-input" name="LinkFB" placeholder="Nhâp Facebook" class="form-control">
+                    <small class="help-block form-text">Vui Lòng Nhập Facebook</small>
                 </div>
             </div>
-
             <div class="row form-group">
                 <div class="col col-md-3">
                     <label for="email-input" class=" form-control-label">Email</label>
                 </div>
                 <div class="col-12 col-md-9">
-                    <input type="email" id="email-input" name="Email" placeholder="Enter Email" class="form-control">
-                    <small class="help-block form-text">Please enter your email</small>
+                    <input type="email" id="email-input" name="Email" placeholder="Nhập Email" class="form-control">
+                    <small class="help-block form-text">Vui Lòng Nhập email</small>
                 </div>
             </div>
-
-
             <div class="row form-group">
                 <div class="col col-md-3">
                     <label for="email-input" class=" form-control-label">Twitter</label>
                 </div>
                 <div class="col-12 col-md-9">
-                    <input type="email" id="email-input" name="Twitter" placeholder="Enter Twitter" class="form-control">
-                    <small class="help-block form-text">Please enter your Twitter</small>
+                    <input type="email" id="email-input" name="Twitter" placeholder="Nhập Twitter" class="form-control">
+                    <small class="help-block form-text">Vui Lòng Nhập Twitter</small>
                 </div>
             </div>
             <div class="card-footer">
                 <button type="submit" class="btn btn-primary btn-sm">
-                    <i class="fa fa-dot-circle-o"></i> Submit
+                    <i class="fa fa-dot-circle-o"></i> Gửi
                 </button>
                 <button type="reset" class="btn btn-danger btn-sm">
-                    <i class="fa fa-ban"></i> Reset
+                    <i class="fa fa-ban"></i> Đặt Lại
                 </button>
             </div>
         </form>
-
-
-
     </div>
-
-
-
 </div>

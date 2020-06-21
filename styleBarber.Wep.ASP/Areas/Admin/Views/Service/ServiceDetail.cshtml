@@ -8,67 +8,44 @@
     </div>
     <div class="card-body card-block">
         <form action="/Admin/Service/UpdateService/@Model.ID" method="post" enctype="multipart/form-data" class="form-horizontal">
-
-
-
             <div class="row form-group">
                 <div class="col col-md-3">
-                    <label for="file-input" class=" form-control-label">Image</label>
+                    <label for="file-input" class=" form-control-label">Hình Ảnh</label>
                 </div>
                 <div class="col-12 col-md-9">
                     <input type="file" id="file-input" name="Image" class="form-control-file" value="@Model.Image">
                 </div>
             </div>
-
-
-
             <div class="row form-group">
                 <div class="col col-md-3">
-                    <label for="text-input" class=" form-control-label">Name</label>
+                    <label for="text-input" class=" form-control-label">Tên</label>
                 </div>
                 <div class="col-12 col-md-9">
-                    <input type="text" id="text-input" name="Name" placeholder="Text" class="form-control" value="@Model.Name">
-                    <small class="form-text text-muted">This is a help text</small>
+                    <input type="text" id="text-input" name="Name"class="form-control" value="@Model.Name">
                 </div>
             </div>
-
-
-
-
-
-
             <div class="row form-group">
                 <div class="col col-md-3">
-                    <label for="textarea-input" class=" form-control-label">ServiceDescription</label>
+                    <label for="textarea-input" class=" form-control-label">Mô Tả</label>
                 </div>
                 <div class="col-12 col-md-9">
-                    <textarea name="ServiceDescription" id="textarea-input" rows="9" placeholder="Content..." class="form-control">@Model.ServiceDescription</textarea>
+                    <textarea name="ServiceDescription" id="textarea-input" rows="9" placeholder="Mô Tả Dịch Vụs..." class="form-control">@Model.ServiceDescription</textarea>
                 </div>
             </div>
-
-
-
-
             <div class="row form-group">
                 <div class="col col-md-3">
-                    <label for="text-input" class=" form-control-label">Price</label>
+                    <label for="text-input" class=" form-control-label">Giá</label>
                 </div>
                 <div class="col-12 col-md-9">
-                    <input type="text" id="text-input" name="Price" placeholder="Text" class="form-control" value="@Model.Price">
-                    <small class="form-text text-muted">This is a help text</small>
+                    <input type="text" id="text-input" name="Price"class="form-control" value="@Model.Price">
                 </div>
-            </div>
-
-
-
-
-           
+            </div>         
             <div class="card-footer">
                 <button type="submit" class="btn btn-primary btn-sm">
-                    <i class="fa fa-dot-circle-o"></i> Submit
+                    <i class="fa fa-dot-circle-o"></i> Gửi
                 </button>
                 <button type="reset" class="btn btn-danger btn-sm">
-                    <i class="fa fa-ban"></i> Reset
+                    <i class="fa fa-ban"></i> Đặt Lại
                 </button>
             </div>
         </form>

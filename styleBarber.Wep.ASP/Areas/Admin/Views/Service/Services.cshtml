@@ -1,5 +1,6 @@
-﻿{
+﻿@{
     ViewBag.Title = "Services";
+    ViewBag.IndexNav = 2;
 }
 
 <div class="main-content">
@@ -8,8 +9,8 @@
             <div class="row">
                 <form action="/Admin/Service/TimKiem" method="post">
                     <div>
-                        <input type="text" name="ten" class="from-control" />
-                        <button type="submit" class="btn btn-danger">Seach</button>
+                        <input type="text" name="ten" class="from-control" style="height:37px" />
+                        <button type="submit" class="btn btn-danger">Tìm Kiếm</button>
                     </div>
                 </form>
             </div>
@@ -18,11 +19,11 @@
                     <!-- DATA TABLE -->
                     <div class="table-data__tool">
                         <div class="table-data__tool-left">
-                            <h3 class="title-5">list service</h3>
+                            <h3 class="title-5">Danh Sách Dịch Vụ</h3>
                         </div>
                         <div class="table-data__tool-right">
                             <a href="/Admin/Service/AddService" class="au-btn au-btn-icon au-btn--green au-btn--small">
-                                <i class="zmdi zmdi-plus"></i>new service
+                                <i class="zmdi zmdi-plus"></i>Thêm Dịch Vụ
                             </a>
                         </div>
                     </div>
@@ -31,9 +32,9 @@
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th>Name</th>
-                                    <th>ServiceDescription</th>
-                                    <th>Price</th>
+                                    <th>Tên</th>
+                                    <th>Mô Tả</th>
+                                    <th>Giá</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -49,12 +50,12 @@
                                             </div>
                                         </td>
                                         <td>@S.Name</td>
-                                        
+
                                         <td>@S.ServiceDescription</td>
                                         <td>
                                             @S.Price
                                         </td>
-                                       
+
                                         <td>
                                             <div class="table-data-feature">
                                                 <a class="item" data-toggle="tooltip" data-placement="top" title="Send" href="/Admin/Service/ServiceDetail/@S.ID">

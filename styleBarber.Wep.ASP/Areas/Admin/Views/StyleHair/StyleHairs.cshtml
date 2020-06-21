@@ -1,5 +1,6 @@
-﻿{
+﻿@{
     ViewBag.Title = "StyleHairs";
+    ViewBag.IndexNav = 3;
 }
 
 <div class="main-content">
@@ -8,8 +9,8 @@
             <div class="row">
                 <form action="/Admin/StyleHair/TimKiem" method="post">
                     <div>
-                        <input type="text" name="ten" class="from-control" />
-                        <button type="submit" class="btn btn-danger">Seach</button>
+                        <input type="text" name="ten" class="from-control" style="height:37px" />
+                        <button type="submit" class="btn btn-danger">Tìm Kiếm</button>
                     </div>
                 </form>
             </div>
@@ -22,7 +23,7 @@
                         </div>
                         <div class="table-data__tool-right">
                             <a href="/Admin/StyleHair/AddStyleHair" class="au-btn au-btn-icon au-btn--green au-btn--small">
-                                <i class="zmdi zmdi-plus"></i>new stylehair
+                                <i class="zmdi zmdi-plus"></i>Thêm Kiểu Tóc
                             </a>
                         </div>
                     </div>

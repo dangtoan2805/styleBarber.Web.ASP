@@ -1,7 +1,7 @@
 ﻿
 @{
     ViewBag.Title = "Appointment";
-    ViewBag.NamePage = "Appointment";
+    ViewBag.NamePage = "Đặt Lịch";
 }
 
 @{ Html.RenderPartial("_PageBar");}
@@ -10,8 +10,8 @@
     <div class="container">
         <div class="section-title row text-center">
             <div class="col-md-8 offset-md-2">
-                <small>LET'S MAKE AN APPOINTMENT FOR YOUR LIFE</small>
-                <h3>Book now</h3>
+                <small>Hãy Đặt Lịch Cho Bạn</small>
+                <h3>Đặt Ngay</h3>
             </div>
         </div><!-- end title -->
 
@@ -21,10 +21,10 @@
                     <form action="/Service/SendAppointment" method="post">
                         <div class="form-row">
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" name="FirstName" id="FirstName" class="form-control" placeholder="First Name">
+                                <input type="text" name="FirstName" id="FirstName" class="form-control" placeholder="Tên">
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" name="LastName" id="LastName" class="form-control" placeholder="Last Name">
+                                <input type="text" name="LastName" id="LastName" class="form-control" placeholder="Họ">
                             </div>
                         </div>
                         <div class="form-row">
@@ -37,22 +37,22 @@
                         </div>
                         <div class="form-row">
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <input type="date" name="Date" id="Date" class="form-control" placeholder="Time">
+                                <input type="date" name="Date" id="Date" class="form-control" placeholder="Thời Gian">
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <select id="basic" class="form-control" name="Time">
-                                    <option value="selecttime">Select Time</option>
+                                    <option value="selecttime">Chọn Thời Gian</option>
                                     <option value="Weekdays">Weekdays</option>
                                     <option value="Weekend">Weekend</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" name="Note" id="comments" rows="6" placeholder="Give us more details.."></textarea>
+                            <textarea class="form-control" name="Note" id="comments" rows="6" placeholder="Cung cấp cho chúng tôi thêm chi tiết.."></textarea>
                         </div>
 
                         <div class="form-btn text-center">
-                            <button type="submit" value="SEND" id="submit" class="btn btn-light btn-radius btn-brd grd1 btn-block subt">Get Appointment</button>
+                            <button type="submit" value="SEND" id="submit" class="btn btn-light btn-radius btn-brd grd1 btn-block subt">Đặt Lịch</button>
                         </div>
                     </form>
                 </div>

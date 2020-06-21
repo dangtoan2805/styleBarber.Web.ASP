@@ -1,7 +1,7 @@
 ﻿
 @{
     ViewBag.Title = "About";
-    ViewBag.NamePage = "About";
+    ViewBag.NamePage = "Giới Thiệu ";
 }
 
 @{ Html.RenderPartial("_PageBar");}
@@ -11,13 +11,16 @@
         <div class="row align-items-center">
             <div class="col-md-6 text-left">
                 <div class="message-box">
-                    <h4>About</h4>
-                    <h2>Welcome to SMBarber</h2>
-                    <p class="lead">Quisque eget nisl id nulla sagittis auctor quis id. Aliquam quis vehicula enim, non aliquam risus. Sed a tellus quis mi rhoncus dignissim.</p>
+                    <h4>Giới Thiệu</h4>
+                    <h2>Chào Mừng Đến với SMBarber</h2>
+                    <p class="lead">
+                        SMBarber chuyên về làm đẹp tóc và cung cấp các loại mỹ phẩm chăm sóc tóc.<br>
+                        Thế mạnh SMBarber là các dịch vụ phục hồi tóc hư tổn, tạo kiểu tóc ngắn phù hợp với các bạn sinh viên.
+                    </p>
 
                     <p> @ViewBag.About  </p>
 
-                    <a href="#services" data-scroll class="btn btn-light btn-radius btn-brd grd1 effect-1">Learn More</a>
+                    <a href="#services" data-scroll class="btn btn-light btn-radius btn-brd grd1 effect-1">Xem Thêm</a>
                 </div><!-- end messagebox -->
             </div><!-- end col -->
             <div class="col-md-6 text-center">
@@ -33,9 +36,9 @@
             <div class="col-md-12">
                 <div class="about-tab">
                     <ul class="nav nav-pills nav-justified" id="myTab" role="tablist">
-                        <li class="nav-item"><a class="nav-link active" href="#tab_a" data-toggle="tab">Our Mission</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#tab_b" data-toggle="tab">Why Us?</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#tab_c" data-toggle="tab">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="#tab_a" data-toggle="tab">Sứ Mệnh</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#tab_b" data-toggle="tab">Tại Sao?</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#tab_c" data-toggle="tab">Về Chúng Tôi</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="tab_a">

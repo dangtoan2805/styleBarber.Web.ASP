@@ -1,7 +1,7 @@
 ﻿
 @{
     ViewBag.Title = "Contact";
-    ViewBag.NamePage = "Contact";
+    ViewBag.NamePage = "Liên Hệ";
 }
 @section scripts{
     @Scripts.Render("~/bundles/map")
@@ -13,8 +13,8 @@
     <div class="container">
         <div class="section-title row text-center">
             <div class="col-md-8 offset-md-2">
-                <small>LET'S MAKE AN CONTACT FOR YOUR LIFE</small>
-                <h3>Contact</h3>
+                <small>Hãy Liên Hệ Cho Chúng Tôi Tại Đây</small>
+                <h3>Liên Hệ</h3>
             </div>
         </div><!-- end title -->
         <div class="row">
@@ -23,10 +23,10 @@
                     <form action="/Home/SendContact" method="post">
                         <div class="form-row">
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" name="FirstName" id="FirstName" class="form-control" placeholder="First Name">
+                                <input type="text" name="FirstName" id="FirstName" class="form-control" placeholder="Tên">
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" name="LastName" id="LastName" class="form-control" placeholder="Last Name">
+                                <input type="text" name="LastName" id="LastName" class="form-control" placeholder="Họ">
                             </div>
                         </div>
                         <div class="form-row">
@@ -39,8 +39,8 @@
                         </div>
                         <div class="form-group">
                             <textarea class="form-control" name="Note" rows="3"></textarea>
-                        </div>
-                        <button type="submit" value="SEND" id="submit" class="btn btn-light btn-radius btn-brd grd1 btn-block subt">Submit</button>
+                        </div>  
+                        <button type="submit" value="SEND" id="submit" class="btn btn-light btn-radius btn-brd grd1 btn-block subt">Liên Hệ</button>
                     </form>
                 </div>
             </div>
