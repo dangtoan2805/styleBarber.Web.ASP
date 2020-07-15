@@ -6,21 +6,20 @@
 <div class="main-content">
     <div class="section__content section__content--p30">
         <div class="container-fluid">
-            <div class="row">
-                <form action="/Admin/StyleHair/TimKiem" method="post">
-                    <div>
-                        <input type="text" name="ten" class="from-control" style="height:37px" />
-                        <button type="submit" class="btn btn-danger">Tìm Kiếm</button>
-                    </div>
-                </form>
+                
             </div>
-            <div class="row">
                 <div class="col-md-12">
                     <!-- DATA TABLE -->
                     <div class="table-data__tool">
                         <div class="table-data__tool-left">
-                            <h3 class="title-5">list StyleHairs</h3>
+                            <h3 class="title-5">Danh Sách Kiểu Tóc</h3>
                         </div>
+                        <form action="/Admin/StyleHair/TimKiem" method="post">
+                            <div>
+                                <input type="text" name="ten" class="from-control" style="height:37px" />
+                                <button type="submit" class="btn btn-danger">Tìm Kiếm</button>
+                            </div>
+                        </form>
                         <div class="table-data__tool-right">
                             <a href="/Admin/StyleHair/AddStyleHair" class="au-btn au-btn-icon au-btn--green au-btn--small">
                                 <i class="zmdi zmdi-plus"></i>Thêm Kiểu Tóc
