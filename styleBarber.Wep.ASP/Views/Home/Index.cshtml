@@ -97,6 +97,11 @@
 
         <div class="row text-center">
             <div class="col-lg-12">
+                <div class="section-title row text-center">
+                    <div class="col-md-8 offset-md-2">
+                        <h3>Kiểu Tóc</h3>
+                    </div>
+                </div><!-- end title -->
                 <div class="owl-services owl-carousel owl-theme">
                     @foreach (var H in ViewBag.StyleHair)
                     {
@@ -123,28 +128,21 @@
     <div class="container">
         <div class="section-title row text-center">
             <div class="col-md-8 offset-md-2">
-                <small>Giá Của SMBarber Chúng Tôi</small>
                 <h3>Giá Cắt Tóc</h3>
             </div>
         </div><!-- end title -->
-        <div class="row flex-items-xs-middle flex-items-xs-center">
-
-            @foreach (var s in ViewBag.Services)
-            {
-                //Table #1  
-                <div class="col-xs-12 col-lg-4">
-                    <div class="card text-center pb-1">
-                        <div class="card-block">
-                            <h4 class="card-title pricing-ti ">@s.Name  </h4>
-                            <div class="line-pricing">
-                                <p class="pb-3">@s.ServiceDescription</p>
-                                <a href="#">@s.Price</a>
-                            </div>
-
+        <div class="flex-items-xs-middle flex-items-xs-center"> 
+            <div class="card text-center pb-1">
+                <div class="card-block">
+                    @foreach (var s in ViewBag.Services)
+                    {
+                        <div class="row">
+                            <p style="font-size: 16px" class="col-6 pl-5 text-left">@s.Name</p>
+                            <a class="col-6 pl-5 text-left text-dark font-weight-bold" href="#">@s.Price</a>
                         </div>
+                    }
                     </div>
-                </div>
-            }
+            </div>            
         </div>
     </div>
 </div><!--end pricing-->
@@ -153,8 +151,7 @@
     <div class="container">
         <div class="section-title row text-center">
             <div class="col-md-8 offset-md-2">
-                <small>Đội Ngũ Nhân Viên Của Chúng Tôi</small>
-                <h3>Nhân Viên</h3>
+                <h3>Nhân Viên Tiêu Biểu</h3>
             </div>
         </div><!-- end title -->
 

@@ -10,9 +10,9 @@ namespace styleBarber.Wep.ASP.Entities
     {
         [Key]
         public int ID { get; set; }
-        [MaxLength(25)]
+        [MinLength(5, ErrorMessage = "Họ từ 1 đến 30 ký tự")]
         public string FisrtName { get; set; }
-        [MaxLength(25)]
+        [StringLength(maximumLength: 30, MinimumLength = 1, ErrorMessage = "Họ từ 1 đến 30 ký tự")]
         public string LastName { get; set; }
         [MaxLength(100)]
         public string Email { get; set; }

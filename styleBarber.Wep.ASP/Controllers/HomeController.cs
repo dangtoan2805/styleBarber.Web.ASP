@@ -14,43 +14,37 @@ namespace styleBarber.Wep.ASP.Controllers
 {
     public class HomeController : Controller
     {
-        private BarberContext _context = new BarberContext();
+        private HomeModel _model = new HomeModel();
 
         public ActionResult Index()
         {
             //GET INFO
-            var Info = _context.InfoStores.ToList();
-            ViewBag.About = Info[0].About;
-            ViewBag.Mission = Info[0].Mission;
-            ViewBag.Reason = Info[0].Reason;
-            //GET STYLE HAIR
-            var StyleHair = _context.StyleHair.Take(3).ToList();
-            ViewBag.StyleHair = StyleHair;
+            var Info = _model.info();
+            ViewBag.About = Info.About;
+            ViewBag.Mission = Info.Mission;
+            ViewBag.Reason = Info.Reason;
+            //GET STYLE HAIR          
+            ViewBag.StyleHair = _model.GetStyleHairs();
             // GET SERVICES
-            var Services = _context.Services.Take(3).ToList();
-            ViewBag.Services = Services;
+            ViewBag.Services = _model.GetServices();
             //GET BARBERS
-            var Barbers = _context.Barbers.Take(3).ToList();
-            ViewBag.Barbers = Barbers;
+            ViewBag.Barbers = _model.GetBarbers();
             //GET REIVIERS
-            var list = _context.Reviewers.ToList();
-            ViewBag.Reviewer = list;
+            ViewBag.Reviewer = _model.GetReviewers();
             return View();
         }
 
         public ActionResult About()
         {
             //GET INFO
-            var Info = _context.InfoStores.ToList();
-            ViewBag.About = Info[0].About;
-            ViewBag.Mission = Info[0].Mission;
-            ViewBag.Reason = Info[0].Reason;
+            var Info = _model.info();
+            ViewBag.About = Info.About;
+            ViewBag.Mission = Info.Mission;
+            ViewBag.Reason = Info.Reason;
             //GET STYLE HAIR
-            var StyleHair = _context.StyleHair.Take(3).ToList();
-            ViewBag.StyleHair = StyleHair;
+            ViewBag.StyleHair = _model.GetStyleHairs();
             //GET REIVIEWER
-            var list = _context.Reviewers.ToList();
-            ViewBag.Reviewer = list;
+            ViewBag.Reviewer = _model.GetReviewers();
             return View();
         }
 

@@ -1,4 +1,5 @@
-﻿using styleBarber.Wep.ASP.EF;
+﻿using styleBarber.Wep.ASP.Areas.Admin.Models;
+using styleBarber.Wep.ASP.EF;
 using styleBarber.Wep.ASP.Entities;
 using System;
 using System.Collections.Generic;
@@ -11,36 +12,23 @@ namespace styleBarber.Wep.ASP.Areas.Admin.Controllers
     public class BarberController : Controller
     {
         // GET: Admin/Barber
-        // GET: Admin/Barber
-        private BarberContext _context = new BarberContext();
+
+        private BarberModel _model = new BarberModel();
         public ActionResult Barbers()
         {
-            var Barbers = _context.Barbers.ToList();
-            ViewBag.Barbers = Barbers;
+            ViewBag.Barbers = _model.GetListBarbers();
             return View();
         }
         public ActionResult TimKiem(string ten)
         {
-            var list = _context.Barbers.Where(c => c.Name == ten).ToList();
-            ViewBag.Barbers = list;
+      
+            ViewBag.Barbers = _model.TimTen(ten);
             return View("Barbers");
         }
         public ActionResult Filter(int level)
         {
-            List<Barber> list = new List<Barber>();
-            switch (level)
-            {
-                case 0:
-                    list= _context.Barbers.ToList();
-                    break;
-                case 1:
-                    list = _context.Barbers.Where(c => c.isFounder == true).ToList();
-                    break;
-                case 2:
-                    list = _context.Barbers.Where(c => c.isFounder == false).ToList();
-                    break;
-            }
-            ViewBag.Barbers = list;
+           
+            ViewBag.Barbers = _model.Filters(level);
             return View("Barbers");
         }
 
@@ -53,36 +41,25 @@ namespace styleBarber.Wep.ASP.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult AddBarber(Barber barber)
         {
-            _context.Barbers.Add(new Barber { Name = barber.Name, Info = barber.Info, Email = barber.Email, LinkFB = barber.LinkFB, Twitter = barber.Twitter });
-            _context.SaveChanges();
+            _model.ThemNV(barber);
             return RedirectToAction("Barbers");
         }
 
         public ActionResult DeleteBarber(int ID)
         {
-            var bar = _context.Barbers.Find(ID);
-
-            _context.Barbers.Remove(bar);
-            _context.SaveChanges();
+            _model.XoaNV(ID);
             return RedirectToAction("Barbers");
         }
 
         public ActionResult BarberDetail(int ID)
         {
-            var bar = _context.Barbers.Find(ID);
-
-            return View(bar);
+          
+            return View(_model.XemNV(ID));
         }
 
         public ActionResult UpdateBarber(int ID, Barber barber)
         {
-            var bar = _context.Barbers.Find(ID);
-            bar.Name = barber.Name;
-            bar.Info = barber.Info;
-            bar.Email = barber.Email;
-            bar.LinkFB = barber.LinkFB;
-            bar.Twitter = barber.Twitter;
-            _context.SaveChanges();
+            _model.SuaNV(ID, barber);
             return RedirectToAction("Barbers");
         }
 

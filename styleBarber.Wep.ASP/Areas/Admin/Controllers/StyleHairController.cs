@@ -1,4 +1,5 @@
-﻿using styleBarber.Wep.ASP.EF;
+﻿using styleBarber.Wep.ASP.Areas.Admin.Models;
+using styleBarber.Wep.ASP.EF;
 using styleBarber.Wep.ASP.Entities;
 using System;
 using System.Collections.Generic;
@@ -12,17 +13,15 @@ namespace styleBarber.Wep.ASP.Areas.Admin.Controllers
     {
         // GET: Admin/Service
         // GET: Admin/Barber
-        private BarberContext _context = new BarberContext();
+        private StyleHairModel _model = new StyleHairModel();
         public ActionResult StyleHairs()
         {
-            var StyleHair = _context.StyleHair.ToList();
-            ViewBag.StyleHair = StyleHair;
+            ViewBag.StyleHair = _model.GetStyleHairs();
             return View();
         }
         public ActionResult TimKiem(string ten)
         {
-            var list = _context.StyleHair.Where(c => c.Title == ten).ToList();
-            ViewBag.StyleHair = list;
+            ViewBag.StyleHair = _model.TimTen(ten);
             return View("StyleHairs");
         }
 
@@ -35,35 +34,24 @@ namespace styleBarber.Wep.ASP.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult AddStyleHair(StyleHair stylehair)
         {
-            _context.StyleHair.Add(new StyleHair { Title = stylehair.Title, StyleDescription = stylehair.StyleDescription});
-            _context.SaveChanges();
+            _model.ThemKT(stylehair);
             return RedirectToAction("StyleHairs");
         }
 
         public ActionResult DeleteStyleHair(int ID)
         {
-            var sty = _context.StyleHair.Find(ID);
-
-            _context.StyleHair.Remove(sty);
-            _context.SaveChanges();
+            _model.XoaKT(ID);
             return RedirectToAction("StyleHairs");
         }
 
         public ActionResult StyleHairDetail(int ID)
-        {
-            var sty = _context.StyleHair.Find(ID);
-
-            return View(sty);
+        {         
+            return View(_model.XemKT(ID));
         }
 
         public ActionResult UpdateStyleHair(int ID, StyleHair stylehair)
         {
-            var sty = _context.StyleHair.Find(ID);
-            sty.Title = stylehair.Title;
-            sty.StyleDescription = stylehair.StyleDescription;
-   
-
-            _context.SaveChanges();
+            _model.SuaKT(ID, stylehair);
             return RedirectToAction("StyleHairs");
         }
 

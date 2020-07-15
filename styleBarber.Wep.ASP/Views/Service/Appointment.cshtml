@@ -1,10 +1,12 @@
-﻿
+﻿@model  styleBarber.Wep.ASP.Models.AppointmentVM
+
 @{
     ViewBag.Title = "Appointment";
     ViewBag.NamePage = "Đặt Lịch";
 }
 
 @{ Html.RenderPartial("_PageBar");}
+
 
 <div id="appointment" class="section wb">
     <div class="container">
@@ -19,9 +21,11 @@
             <div class="col-lg-12">
                 <div class="contact_form">
                     <form action="/Service/SendAppointment" method="post">
+                        @Html.ValidationSummary(true)
                         <div class="form-row">
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <input type="text" name="FirstName" id="FirstName" class="form-control" placeholder="Tên">
+                                @Html.ValidationMessageFor(Model => Model.FirstName)
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <input type="text" name="LastName" id="LastName" class="form-control" placeholder="Họ">
@@ -32,7 +36,7 @@
                                 <input type="email" name="Email" id="Email" class="form-control" placeholder="Email">
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <input type="tel" name="Phone" id="Phone" class="form-control" placeholder="Phone" required>
+                                <input type="tel" name="Phone" id="Phone" class="form-control" placeholder="Phone">
                             </div>
                         </div>
                         <div class="form-row">
@@ -52,7 +56,7 @@
                         </div>
 
                         <div class="form-btn text-center">
-                            <button type="submit" value="SEND" id="submit" class="btn btn-light btn-radius btn-brd grd1 btn-block subt">Đặt Lịch</button>
+                            <button type="submit" id="submit" class="btn btn-light btn-radius btn-brd grd1 btn-block subt">Đặt Lịch</button>
                         </div>
                     </form>
                 </div>

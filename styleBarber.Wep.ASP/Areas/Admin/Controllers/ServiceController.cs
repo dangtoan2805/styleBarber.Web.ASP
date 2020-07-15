@@ -1,4 +1,5 @@
-﻿using styleBarber.Wep.ASP.EF;
+﻿using styleBarber.Wep.ASP.Areas.Admin.Models;
+using styleBarber.Wep.ASP.EF;
 using styleBarber.Wep.ASP.Entities;
 using System;
 using System.Collections.Generic;
@@ -12,17 +13,17 @@ namespace styleBarber.Wep.ASP.Areas.Admin.Controllers
     {
         // GET: Admin/Service
         // GET: Admin/Barber
-        private BarberContext _context = new BarberContext();
+        private ServiceModel _model = new ServiceModel();
         public ActionResult Services()
         {
-            var Services = _context.Services.ToList();
-            ViewBag.Services = Services;
+           
+            ViewBag.Services = _model.GetServices();
             return View();
         }
         public ActionResult TimKiem(string ten)
         {
-            var list = _context.Services.Where(c => c.Name == ten).ToList();
-            ViewBag.Services = list;
+    
+            ViewBag.Services = _model.TimTen(ten);
             return View("Services");
         }
         [HttpGet]
@@ -34,35 +35,24 @@ namespace styleBarber.Wep.ASP.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult AddService(Service service)
         {
-            _context.Services.Add(new Service { Name = service.Name, ServiceDescription = service.ServiceDescription, Price = service.Price });
-            _context.SaveChanges();
+            _model.ThemDV(service);
             return RedirectToAction("Services");
         }
 
         public ActionResult DeleteService(int ID)
         {
-            var ser = _context.Services.Find(ID);
-
-            _context.Services.Remove(ser);
-            _context.SaveChanges();
+            _model.XoaDV(ID);
             return RedirectToAction("Services");
         }
 
         public ActionResult ServiceDetail(int ID)
         {
-            var ser = _context.Services.Find(ID);
-
-            return View(ser);
+            return View(_model.XemDV(ID));
         }
 
         public ActionResult UpdateService(int ID, Service service)
         {
-            var ser = _context.Services.Find(ID);
-            ser.Name = service.Name;
-            ser.ServiceDescription = service.ServiceDescription;
-            ser.Price = service.Price;
-           
-            _context.SaveChanges();
+            _model.SuaDV(ID, service);
             return RedirectToAction("Services");
         }
 
