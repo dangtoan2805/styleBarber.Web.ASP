@@ -49,6 +49,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.10.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -479,30 +482,42 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BarberController.cs" />
-    <Compile Include="Areas\Admin\Controllers\CTLICHController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ServiceController.cs" />
     <Compile Include="Areas\Admin\Controllers\SettingController.cs" />
     <Compile Include="Areas\Admin\Controllers\StyleHairController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
+    <Compile Include="Dao\AppoimentDao.cs" />
     <Compile Include="Dao\BarberDao.cs" />
+    <Compile Include="Dao\ContactDao.cs" />
+    <Compile Include="Dao\ServiceDao.cs" />
+    <Compile Include="Dao\SettingDao.cs" />
+    <Compile Include="Dao\StyleHairDao.cs" />
     <Compile Include="EF\BarberContext.cs" />
     <Compile Include="Entities\Appointment.cs" />
-    <Compile Include="Entities\AppointmentDetail.cs" />
     <Compile Include="Entities\Barber.cs" />
-    <Compile Include="Entities\Calendar.cs" />
     <Compile Include="Entities\Contact.cs" />
     <Compile Include="Entities\InfoStore.cs" />
     <Compile Include="Entities\Reviewer.cs" />
     <Compile Include="Entities\Service.cs" />
-    <Compile Include="Entities\Slider.cs" />
     <Compile Include="Entities\StyleHair.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AppointmentVM.cs" />
-    <Compile Include="Models\ContactVM.cs" />
+    <Compile Include="Helper\DataCache.cs" />
+    <Compile Include="Helper\Helpful.cs" />
+    <Compile Include="Migrations\202007161337527_Init.cs" />
+    <Compile Include="Migrations\202007161337527_Init.designer.cs">
+      <DependentUpon>202007161337527_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AppoimentModel.cs" />
+    <Compile Include="Models\BarberModel.cs" />
+    <Compile Include="Models\ContactModel.cs" />
+    <Compile Include="Models\ServiceModel.cs" />
+    <Compile Include="Models\SettingModel.cs" />
+    <Compile Include="Models\StyleHairModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -703,8 +718,6 @@
     <Content Include="Areas\Admin\Views\Barber\AddBarber.cshtml" />
     <Content Include="Areas\Admin\Views\Barber\BarberDetail.cshtml" />
     <Content Include="Areas\Admin\Views\Barber\Barbers.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\AppointmentDetail.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\ContactDetail.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Service\AddService.cshtml" />
     <Content Include="Areas\Admin\Views\Service\ServiceDetail.cshtml" />
@@ -741,44 +754,24 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\perfect-scrollbar.min.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\report.js" />
     <Content Include="Scripts\responsive-tabs.js" />
     <Content Include="Scripts\select2.min.js" />
     <Content Include="Scripts\slick.min.js" />
     <Content Include="Scripts\wow.min.js" />
     <Content Include="Uploads\about-bg.jpg" />
     <Content Include="Uploads\about-img.jpg" />
-    <Content Include="Uploads\avatar-01.jpg" />
-    <Content Include="Uploads\avatar-02.jpg" />
-    <Content Include="Uploads\avatar-03.jpg" />
-    <Content Include="Uploads\avatar-04.jpg" />
-    <Content Include="Uploads\avatar-05.jpg" />
     <Content Include="Uploads\barber_01.jpg" />
     <Content Include="Uploads\barber_02.jpg" />
-    <Content Include="Uploads\barber_03.jpg" />
-    <Content Include="Uploads\barber_04.jpg" />
-    <Content Include="Uploads\barber_05.jpg" />
-    <Content Include="Uploads\barber_06.jpg" />
     <Content Include="Uploads\barber_all.jpg" />
-    <Content Include="Uploads\barber_service_01.jpg" />
-    <Content Include="Uploads\barber_service_02.jpg" />
-    <Content Include="Uploads\barber_service_03.jpg" />
-    <Content Include="Uploads\barber_service_04.jpg" />
-    <Content Include="Uploads\barber_service_05.jpg" />
-    <Content Include="Uploads\barber_service_06.jpg" />
-    <Content Include="Uploads\barber_team_01.jpg" />
-    <Content Include="Uploads\barber_team_02.jpg" />
-    <Content Include="Uploads\barber_team_03.jpg" />
     <Content Include="Uploads\logo-mini.png" />
     <Content Include="Uploads\logo-white.png" />
     <Content Include="Uploads\mustache.png" />
+    <Content Include="Uploads\no-img.jpg" />
     <Content Include="Uploads\parallax_20.jpg" />
     <Content Include="Uploads\slider-img-01.jpg" />
     <Content Include="Uploads\slider-img-02.jpg" />
     <Content Include="Uploads\slider-img-03.jpg" />
-    <Content Include="Uploads\testi_01.png" />
-    <Content Include="Uploads\barber_001.png" />
-    <Content Include="Uploads\testi_03.png" />
-    <Content Include="Uploads\Untitled-1.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -800,19 +793,23 @@
     <Content Include="Views\Service\Barbers.cshtml" />
     <Content Include="Views\Service\Appointment.cshtml" />
     <Content Include="Views\Shared\_PageBar.cshtml" />
+    <Content Include="Views\Home\Thank.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202007161337527_Init.resx">
+      <DependentUpon>202007161337527_Init.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

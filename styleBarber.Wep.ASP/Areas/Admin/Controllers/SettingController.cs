@@ -1,17 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using styleBarber.Wep.ASP.Entities;
+using styleBarber.Wep.ASP.Helper;
+using styleBarber.Wep.ASP.Models;
 using System.Web;
 using System.Web.Mvc;
 
 namespace styleBarber.Wep.ASP.Areas.Admin.Controllers
 {
+    //Admin
     public class SettingController : Controller
     {
-        // GET: Admin/Setting
+        private SettingModel _settingModel = null;
+
+        public SettingController()
+        {
+            _settingModel = new SettingModel();
+        }
         public ActionResult Index()
         {
-            return View();
+            return View(_settingModel.GetInfo());
+        }
+
+        public ActionResult Update(InfoStore info, HttpPostedFileBase file)
+        {
+            info.Logo = Helpful.UploadImage(file, Server);
+            _settingModel.UpdateInfo(info);
+            return RedirectToAction("Index", "Home");
         }
     }
 }

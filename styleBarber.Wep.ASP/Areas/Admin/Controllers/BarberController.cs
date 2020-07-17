@@ -1,8 +1,5 @@
-﻿using styleBarber.Wep.ASP.EF;
-using styleBarber.Wep.ASP.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using styleBarber.Wep.ASP.Helper;
+using styleBarber.Wep.ASP.Models;
 using System.Web;
 using System.Web.Mvc;
 
@@ -10,37 +7,25 @@ namespace styleBarber.Wep.ASP.Areas.Admin.Controllers
 {
     public class BarberController : Controller
     {
-        // GET: Admin/Barber
-        // GET: Admin/Barber
-        private BarberContext _context = new BarberContext();
+        private BarberModel _barberModel = null;
+        public BarberController()
+        {
+            _barberModel = new BarberModel();
+        }
         public ActionResult Barbers()
         {
-            var Barbers = _context.Barbers.ToList();
-            ViewBag.Barbers = Barbers;
+            ViewBag.Barbers = _barberModel.GetBarberVMs();
             return View();
         }
         public ActionResult TimKiem(string ten)
-        {
-            var list = _context.Barbers.Where(c => c.Name == ten).ToList();
-            ViewBag.Barbers = list;
+        {  
+            ViewBag.Barbers = _barberModel.Find(ten);
             return View("Barbers");
         }
         public ActionResult Filter(int level)
         {
-            List<Barber> list = new List<Barber>();
-            switch (level)
-            {
-                case 0:
-                    list= _context.Barbers.ToList();
-                    break;
-                case 1:
-                    list = _context.Barbers.Where(c => c.isFounder == true).ToList();
-                    break;
-                case 2:
-                    list = _context.Barbers.Where(c => c.isFounder == false).ToList();
-                    break;
-            }
-            ViewBag.Barbers = list;
+            if (level < 2)
+                ViewBag.Barbers = _barberModel.Filter(level == 1);
             return View("Barbers");
         }
 
@@ -51,38 +36,28 @@ namespace styleBarber.Wep.ASP.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddBarber(Barber barber)
+        public ActionResult AddBarber(BarberVM barber, HttpPostedFileBase image)
         {
-            _context.Barbers.Add(new Barber { Name = barber.Name, Info = barber.Info, Email = barber.Email, LinkFB = barber.LinkFB, Twitter = barber.Twitter });
-            _context.SaveChanges();
+            barber.Image = Helpful.UploadImage(image, Server);
+            _barberModel.AddBarber(barber);
             return RedirectToAction("Barbers");
         }
 
         public ActionResult DeleteBarber(int ID)
         {
-            var bar = _context.Barbers.Find(ID);
-
-            _context.Barbers.Remove(bar);
-            _context.SaveChanges();
+            _barberModel.Delete(ID);
             return RedirectToAction("Barbers");
         }
 
         public ActionResult BarberDetail(int ID)
         {
-            var bar = _context.Barbers.Find(ID);
-
-            return View(bar);
+            return View(_barberModel.Detail(ID));
         }
 
-        public ActionResult UpdateBarber(int ID, Barber barber)
+        public ActionResult UpdateBarber(int ID, BarberVM barber, HttpPostedFileBase image)
         {
-            var bar = _context.Barbers.Find(ID);
-            bar.Name = barber.Name;
-            bar.Info = barber.Info;
-            bar.Email = barber.Email;
-            bar.LinkFB = barber.LinkFB;
-            bar.Twitter = barber.Twitter;
-            _context.SaveChanges();
+            barber.Image = Helpful.UploadImage(image, Server);
+            _barberModel.Update(ID, barber);
             return RedirectToAction("Barbers");
         }
 

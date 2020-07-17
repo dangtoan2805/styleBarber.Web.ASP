@@ -1,27 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using styleBarber.Wep.ASP.Models;
+using System;
 using System.Web.Mvc;
 
 namespace styleBarber.Wep.ASP.Areas.Admin.Controllers
 {
+    //Admin
     public class HomeController : Controller
     {
-        // GET: Admin/Home
+        private AppoimentModel _appointmentModel = null;
+        private ContactModel _contactModel = null;
+        public HomeController()
+        {
+            _appointmentModel = new AppoimentModel();
+            _contactModel = new ContactModel();
+        }
         public ActionResult Index()
         {
+            ViewBag.Total = _appointmentModel.CountTotal();
             return View();
         }
 
-        public ActionResult AppointmentDetail()
+        public JsonResult GetAppoitmentByDate(string date)
         {
-            return View();
+            var dateCr = Convert.ToDateTime(date).ToString();
+            var data = _appointmentModel.FilterByDate(Convert.ToDateTime(date));
+            return Json(data,JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult ContactDetail()
+        public JsonResult GetContacts()
         {
-            return View();
+            return Json(_contactModel.GetContactVMs());
         }
     }
 }

@@ -12,7 +12,7 @@ namespace styleBarber.Wep.ASP.Entities
         public string LastName { get; set; }
         [MaxLength(100)]
         public string Email { get; set; }
-        public int Phone { get; set; }
+        public string Phone { get; set; }
         [MaxLength(350)]
         public string Note { get; set; }
     }

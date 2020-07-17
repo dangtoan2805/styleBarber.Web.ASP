@@ -14,43 +14,43 @@ namespace styleBarber.Wep.ASP.Controllers
 {
     public class HomeController : Controller
     {
-        private BarberContext _context = new BarberContext();
 
+        private BarberModel _barberModel = null;
+        private StyleHairModel _stylerModel = null;
+        private ServiceModel _serviceModel = null;
+        private SettingModel _settingModel = null;
+        private ContactModel _contactModel = null;
+        public HomeController()
+        {
+            _barberModel = new BarberModel();
+            _stylerModel = new StyleHairModel();
+            _serviceModel = new ServiceModel();
+            _settingModel = new SettingModel();
+            _contactModel = new ContactModel();
+        }
         public ActionResult Index()
         {
-            //GET INFO
-            var Info = _context.InfoStores.ToList();
-            ViewBag.About = Info[0].About;
-            ViewBag.Mission = Info[0].Mission;
-            ViewBag.Reason = Info[0].Reason;
-            //GET STYLE HAIR
-            var StyleHair = _context.StyleHair.Take(3).ToList();
-            ViewBag.StyleHair = StyleHair;
+            // GET INFO
+            var Info = _settingModel.GetInfo();
+            ViewBag.About = Info.About;
+            ViewBag.Mission = Info.Mission;
+            ViewBag.Reason = Info.Reason;
+            // GET STYLE HAIR
+            ViewBag.StyleHair = _stylerModel.GetStyleHairVMs();
             // GET SERVICES
-            var Services = _context.Services.Take(3).ToList();
-            ViewBag.Services = Services;
-            //GET BARBERS
-            var Barbers = _context.Barbers.Take(3).ToList();
-            ViewBag.Barbers = Barbers;
-            //GET REIVIERS
-            var list = _context.Reviewers.ToList();
-            ViewBag.Reviewer = list;
+            ViewBag.Services = _serviceModel.GetServiceVMs();
+            // GET BARBERS
+            ViewBag.Barbers = _barberModel.GetBarberVMs();
+            // GET REIVIERS
+            ViewBag.Reviewer = _settingModel.GetReviewers();
             return View();
         }
 
         public ActionResult About()
         {
-            //GET INFO
-            var Info = _context.InfoStores.ToList();
-            ViewBag.About = Info[0].About;
-            ViewBag.Mission = Info[0].Mission;
-            ViewBag.Reason = Info[0].Reason;
-            //GET STYLE HAIR
-            var StyleHair = _context.StyleHair.Take(3).ToList();
-            ViewBag.StyleHair = StyleHair;
-            //GET REIVIEWER
-            var list = _context.Reviewers.ToList();
-            ViewBag.Reviewer = list;
+           
+            ViewBag.StyleHair = new List<StyleHair>();
+            ViewBag.Reviewer = new List<Reviewer>();
             return View();
         }
 
@@ -61,9 +61,14 @@ namespace styleBarber.Wep.ASP.Controllers
 
         public ActionResult SendContact(ContactVM contact)
         {
-            return View();
+            _contactModel.Add(contact);
+            return RedirectToAction("Thank", "Home");
         }
 
+        public ActionResult Thank()
+        {
+            return View();
+        }
 
        
     }

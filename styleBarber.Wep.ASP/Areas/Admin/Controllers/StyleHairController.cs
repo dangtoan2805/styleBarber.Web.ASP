@@ -1,8 +1,5 @@
-﻿using styleBarber.Wep.ASP.EF;
-using styleBarber.Wep.ASP.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using styleBarber.Wep.ASP.Helper;
+using styleBarber.Wep.ASP.Models;
 using System.Web;
 using System.Web.Mvc;
 
@@ -11,18 +8,21 @@ namespace styleBarber.Wep.ASP.Areas.Admin.Controllers
     public class StyleHairController : Controller
     {
         // GET: Admin/Service
-        // GET: Admin/Barber
-        private BarberContext _context = new BarberContext();
+        private StyleHairModel _styleModel = null;
+        public StyleHairController()
+        {
+            _styleModel = new StyleHairModel();
+        }
         public ActionResult StyleHairs()
         {
-            var StyleHair = _context.StyleHair.ToList();
-            ViewBag.StyleHair = StyleHair;
+
+            ViewBag.StyleHair = _styleModel.GetStyleHairVMs();
             return View();
         }
         public ActionResult TimKiem(string ten)
         {
-            var list = _context.StyleHair.Where(c => c.Title == ten).ToList();
-            ViewBag.StyleHair = list;
+
+            ViewBag.StyleHair = _styleModel.Find(ten);
             return View("StyleHairs");
         }
 
@@ -33,37 +33,28 @@ namespace styleBarber.Wep.ASP.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddStyleHair(StyleHair stylehair)
+        public ActionResult AddStyleHair(StyleHairVM stylehair, HttpPostedFileBase file)
         {
-            _context.StyleHair.Add(new StyleHair { Title = stylehair.Title, StyleDescription = stylehair.StyleDescription});
-            _context.SaveChanges();
+            stylehair.Image = Helpful.UploadImage(file, Server);
+            _styleModel.AddStyleHair(stylehair);
             return RedirectToAction("StyleHairs");
         }
 
         public ActionResult DeleteStyleHair(int ID)
         {
-            var sty = _context.StyleHair.Find(ID);
-
-            _context.StyleHair.Remove(sty);
-            _context.SaveChanges();
+            _styleModel.Delete(ID);
             return RedirectToAction("StyleHairs");
         }
 
         public ActionResult StyleHairDetail(int ID)
         {
-            var sty = _context.StyleHair.Find(ID);
-
-            return View(sty);
+            return View(_styleModel.Detail(ID));
         }
 
-        public ActionResult UpdateStyleHair(int ID, StyleHair stylehair)
+        public ActionResult UpdateStyleHair(int ID, StyleHairVM stylehair , HttpPostedFileBase file)
         {
-            var sty = _context.StyleHair.Find(ID);
-            sty.Title = stylehair.Title;
-            sty.StyleDescription = stylehair.StyleDescription;
-   
-
-            _context.SaveChanges();
+            stylehair.Image = Helpful.UploadImage(file, Server);
+            _styleModel.Udpdate(ID, stylehair);
             return RedirectToAction("StyleHairs");
         }
 

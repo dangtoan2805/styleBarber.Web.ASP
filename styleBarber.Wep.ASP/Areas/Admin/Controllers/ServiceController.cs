@@ -1,28 +1,27 @@
-﻿using styleBarber.Wep.ASP.EF;
-using styleBarber.Wep.ASP.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using styleBarber.Wep.ASP.Helper;
+using styleBarber.Wep.ASP.Models;
 using System.Web;
 using System.Web.Mvc;
 
 namespace styleBarber.Wep.ASP.Areas.Admin.Controllers
 {
+    //ADMIN
     public class ServiceController : Controller
     {
-        // GET: Admin/Service
-        // GET: Admin/Barber
-        private BarberContext _context = new BarberContext();
+        private ServiceModel _serviceModel = null;
+        public ServiceController()
+        {
+            _serviceModel = new ServiceModel();
+        }
         public ActionResult Services()
         {
-            var Services = _context.Services.ToList();
-            ViewBag.Services = Services;
+            ViewBag.Services = _serviceModel.GetServiceVMs();
             return View();
         }
         public ActionResult TimKiem(string ten)
         {
-            var list = _context.Services.Where(c => c.Name == ten).ToList();
-            ViewBag.Services = list;
+            ViewBag.Services = _serviceModel.Find(ten);
+
             return View("Services");
         }
         [HttpGet]
@@ -32,37 +31,28 @@ namespace styleBarber.Wep.ASP.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddService(Service service)
+        public ActionResult AddService(ServiceVM service,HttpPostedFileBase file)
         {
-            _context.Services.Add(new Service { Name = service.Name, ServiceDescription = service.ServiceDescription, Price = service.Price });
-            _context.SaveChanges();
+            service.Image = Helpful.UploadImage(file, Server);
+            _serviceModel.AddService(service);
             return RedirectToAction("Services");
         }
 
         public ActionResult DeleteService(int ID)
         {
-            var ser = _context.Services.Find(ID);
-
-            _context.Services.Remove(ser);
-            _context.SaveChanges();
+            _serviceModel.Delete(ID);
             return RedirectToAction("Services");
         }
 
         public ActionResult ServiceDetail(int ID)
         {
-            var ser = _context.Services.Find(ID);
-
-            return View(ser);
+            return View(_serviceModel.Detail(ID));
         }
 
-        public ActionResult UpdateService(int ID, Service service)
+        public ActionResult UpdateService(int ID, ServiceVM service, HttpPostedFileBase file)
         {
-            var ser = _context.Services.Find(ID);
-            ser.Name = service.Name;
-            ser.ServiceDescription = service.ServiceDescription;
-            ser.Price = service.Price;
-           
-            _context.SaveChanges();
+            service.Image = Helpful.UploadImage(file, Server);
+            _serviceModel.Update(ID, service);
             return RedirectToAction("Services");
         }
 
