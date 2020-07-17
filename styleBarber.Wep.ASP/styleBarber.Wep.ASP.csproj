@@ -521,6 +521,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DumData v2.sql" />
     <Content Include="Content\animate-wow.css" />
     <Content Include="Content\animate.css" />
     <Content Include="Content\animate.min.css" />
