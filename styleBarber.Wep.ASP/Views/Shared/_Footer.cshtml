@@ -44,7 +44,15 @@
                     <a href="~/Home/About">Giới Thiệu</a>
                     <a href="~/Service/Appointment">Đặt Lịch</a>
                     <a href="~/Home/Contact">Liên Hệ</a>
-                    <a href="~/Admin/Home/Index">Đăng nhập</a>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a href="~/Account/ChangePass">Đổi mật khẩu</a>
+                    }
+                    else
+                    {
+                        <a href="~/Admin/Home/Index">Đăng nhập</a>
+                        <a href="~/Account/Register">Đăng kí</a>
+                    }
                 </p>
                 <p class="footer-company-name">Copyright 2020 SMBarber, Inc. All Rights Reserved</p>
             </div>

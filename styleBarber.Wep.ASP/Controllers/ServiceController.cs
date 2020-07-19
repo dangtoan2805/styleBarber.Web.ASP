@@ -50,6 +50,14 @@ namespace styleBarber.Wep.ASP.Controllers
         }
         public ActionResult SendAppointment(AppointmentVM appointmentVM, string Time)
         {
+            if (!ModelState.IsValid)
+            {
+                string id = User.Identity.Name;
+                ViewBag.User = _userModel.GetUser(Int32.Parse(id));
+                ViewBag.Barber = _barberModel.GetBarberVMs();
+                ViewBag.Times = _appoimentModel.GetTimes();
+                return View("Appointment", appointmentVM);
+            }
             if (!HttpContext.User.Identity.IsAuthenticated)
                 return RedirectToAction("Appointment");
             _appoimentModel.Add(appointmentVM);

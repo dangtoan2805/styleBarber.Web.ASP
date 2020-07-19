@@ -48,10 +48,12 @@ namespace styleBarber.Wep.ASP.Models
             FormsAuthentication.SignOut();
         }
 
-        public void AddUser(UserVM userVM)
+        public void AddUser(UserVM userVM, string pass)
         {
             if (userVM == null) return;
-            _db.AddUser(_mapper.Map<User>(userVM));
+            User user = _mapper.Map<User>(userVM);
+            user.Password = pass;
+            _db.AddUser(user);
         }
 
     }
@@ -63,8 +65,6 @@ namespace styleBarber.Wep.ASP.Models
         public string Phone { get; set; }
         public string Image { get; set; }
         public string Job { get; set; }
-
-
     }
 
 

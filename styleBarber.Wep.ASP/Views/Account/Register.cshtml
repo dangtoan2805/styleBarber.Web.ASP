@@ -1,0 +1,45 @@
+﻿@model styleBarber.Wep.ASP.Models.UserVM
+
+@{
+    ViewBag.Title = "Register";
+}
+
+    <div class="section wb">
+        <div class="container">
+            <h2 class="text-center">Register</h2>
+            <div class="row align-items-center">
+                <form class="mx-auto" action="/Account/Register" method="post">
+                    <div class="form-group">
+                        <label for="Name">Email address</label>
+                        <input type="email" class="form-control" id="Name" name="Name" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="Email">Email address</label>
+                        <input type="email" class="form-control" id="Email" name="Email" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <label for="re_password">Re-Password</label>
+                        <input type="password" class="form-control" id="re_password" name="re_password" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <label for="Phone">Phone</label>
+                        <input type="tel" class="form-control" id="Phone" name="Phone" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="Job">Job</label>
+                        <input type="text" class="form-control" id="Job" name="Job" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="Image">Image</label>
+                        <input type="file" class="form-control" id="File" name="File" placeholder="Enter email">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+                </form>
+            </div>
+        </div>
+        <a class="text-center d-block" href="/Account/Index">Back to Sign In</a>
+    </div>

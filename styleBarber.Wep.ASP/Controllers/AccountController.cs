@@ -1,4 +1,6 @@
-﻿using styleBarber.Wep.ASP.Models;
+﻿using styleBarber.Wep.ASP.Entities;
+using styleBarber.Wep.ASP.Helper;
+using styleBarber.Wep.ASP.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,8 +45,30 @@ namespace styleBarber.Wep.ASP.Controllers
                 case 1:
                     return RedirectToAction(action, controller);
                 default:
-                    return RedirectToAction("Idnex");
+                    return RedirectToAction("Index");
             }
+        }
+
+        public ActionResult Register()
+        {
+            return View(new UserVM());
+        }
+
+
+        [HttpPost]
+        public ActionResult Register(UserVM user, string password, string re_password, HttpPostedFileBase File)
+        {
+            if (password != re_password)
+                return View("Register", user);
+            user.Image = Helpful.UploadImage(File, Server);
+            _userModel.AddUser(user,password);
+            return RedirectToAction("Index","Account");
+        }
+
+        public ActionResult Logout()
+        {
+            _userModel.UserLogout();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

@@ -801,6 +801,7 @@
     <Content Include="Views\Shared\_PageBar.cshtml" />
     <Content Include="Views\Home\Thank.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

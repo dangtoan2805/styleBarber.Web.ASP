@@ -4,6 +4,7 @@ using styleBarber.Wep.ASP.Entities;
 using styleBarber.Wep.ASP.Helper;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -116,6 +117,7 @@ namespace styleBarber.Wep.ASP.Models
     public class AppointmentVM
     {
         public int ID { get; set; }
+        [Required(ErrorMessage ="ABADASD")]
         public string DateCheckOut { get; set; }
         public string Time { get; set; }
         public string Name { get; set; }

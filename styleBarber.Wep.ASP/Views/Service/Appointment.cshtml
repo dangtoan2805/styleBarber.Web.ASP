@@ -5,6 +5,7 @@
 }
 
 @{ Html.RenderPartial("_PageBar");}
+@model styleBarber.Wep.ASP.Models.AppointmentVM
 
 <div id="appointment" class="section wb">
     <div class="container">
@@ -14,7 +15,6 @@
                 <h3>Đặt Ngay</h3>
             </div>
         </div><!-- end title -->
-
         <div class="row">
             <div class="col-lg-12">
                 <div class="contact_form">
@@ -23,10 +23,11 @@
                         <div class="form-row">
                             <input type="hidden" value="@ViewBag.User.ID" name="UserID" />
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <input type="date" name="Date" id="Date" class="form-control" placeholder="Thời Gian">
+                                @Html.ValidationMessageFor(model => model.DateCheckOut)
+                                <input type="date" name="DateCheckOut" id="DateCheckOut" class="form-control" value="@Model.DateCheckOut" placeholder="Thời Gian">
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <select id="basic" class="form-control" name="Time">
+                                <select id="Time" class="form-control" name="Time">
                                     <option value="Time">Chọn Thời Gian</option>
                                     @foreach (var item in ViewBag.Times)
                                     {
@@ -37,7 +38,7 @@
                         </div>
                         <div class="form-row">
                             <div class="col-12">
-                                <select id="basic" class="form-control" name="BarberID">
+                                <select id="BarberID" class="form-control" name="BarberID">
                                     <option value="">Chọn Barber</option>
                                     @foreach (var item in ViewBag.Barber)
                                     {
@@ -47,7 +48,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" name="Note" id="comments" rows="6" placeholder="Cung cấp cho chúng tôi thêm chi tiết.."></textarea>
+                            <textarea class="form-control" name="Note" id="Note" rows="3" placeholder="Cung cấp cho chúng tôi thêm chi tiết..">@Model.Note</textarea>
                         </div>
                         <div class="form-btn text-center">
                             <button type="submit" value="SEND" id="submit" class="btn btn-light btn-radius btn-brd grd1 btn-block subt">Đặt Lịch</button>
@@ -58,6 +59,5 @@
         </div><!-- end row -->
     </div><!-- end container -->
 </div><!-- end section -->
-
 @{Html.RenderPartial("_Footer");}
 

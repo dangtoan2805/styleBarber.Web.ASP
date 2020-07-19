@@ -30,6 +30,7 @@ namespace styleBarber.Wep.ASP.Dao
         public void AddUser(User user)
         {
             _context.Users.Add(user);
+            _context.SaveChangesAsync();
         }
 
         public void Update(User user)
