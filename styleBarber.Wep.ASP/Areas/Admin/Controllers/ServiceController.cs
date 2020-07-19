@@ -31,9 +31,9 @@ namespace styleBarber.Wep.ASP.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddService(ServiceVM service,HttpPostedFileBase file)
+        public ActionResult AddService(ServiceVM service,HttpPostedFileBase Image)
         {
-            service.Image = Helpful.UploadImage(file, Server);
+            service.Image = Helpful.UploadImage(Image, Server);
             _serviceModel.AddService(service);
             return RedirectToAction("Services");
         }
@@ -49,9 +49,9 @@ namespace styleBarber.Wep.ASP.Areas.Admin.Controllers
             return View(_serviceModel.Detail(ID));
         }
 
-        public ActionResult UpdateService(int ID, ServiceVM service, HttpPostedFileBase file)
+        public ActionResult UpdateService(int ID, ServiceVM service, HttpPostedFileBase Image)
         {
-            service.Image = Helpful.UploadImage(file, Server);
+            service.Image = Helpful.UploadImage(Image, Server);
             _serviceModel.Update(ID, service);
             return RedirectToAction("Services");
         }

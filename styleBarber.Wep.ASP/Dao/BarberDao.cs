@@ -2,6 +2,7 @@
 using styleBarber.Wep.ASP.Entities;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -41,6 +42,8 @@ namespace styleBarber.Wep.ASP.Dao
             bar.Email = barber.Email;
             bar.LinkFB = barber.LinkFB;
             bar.Twitter = barber.Twitter;
+            bar.Image  = barber.Image;
+            bar.isFounder  = barber.isFounder;
             _context.SaveChanges();
         }
 

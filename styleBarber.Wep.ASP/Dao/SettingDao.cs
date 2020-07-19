@@ -27,11 +27,6 @@ namespace styleBarber.Wep.ASP.Dao
             obj.Mission = info.Mission;
             _context.SaveChangesAsync();
         }
-
-        public List<Reviewer> GetReviewers()
-        {
-            return _context.Reviewers.ToList();
-        }
     }
 
 }

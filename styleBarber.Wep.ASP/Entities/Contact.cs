@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace styleBarber.Wep.ASP.Entities
 {
@@ -6,14 +7,12 @@ namespace styleBarber.Wep.ASP.Entities
     {
         [Key]
         public int ID { get; set; }
-        [MaxLength(25)]
-        public string FirstName { get; set; }
-        [MaxLength(25)]
-        public string LastName { get; set; }
-        [MaxLength(100)]
-        public string Email { get; set; }
-        public string Phone { get; set; }
         [MaxLength(350)]
-        public string Note { get; set; }
+        public string Review { get; set; } 
+        //
+        [ForeignKey("User")]
+        public int? UserID { get; set; }
+        //Nav
+        public User User { get; set; }
     }
 }

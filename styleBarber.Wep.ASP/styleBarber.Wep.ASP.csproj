@@ -482,10 +482,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BarberController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ContactController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ServiceController.cs" />
     <Compile Include="Areas\Admin\Controllers\SettingController.cs" />
     <Compile Include="Areas\Admin\Controllers\StyleHairController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Dao\AppoimentDao.cs" />
@@ -494,22 +496,23 @@
     <Compile Include="Dao\ServiceDao.cs" />
     <Compile Include="Dao\SettingDao.cs" />
     <Compile Include="Dao\StyleHairDao.cs" />
+    <Compile Include="Dao\UserDao.cs" />
     <Compile Include="EF\BarberContext.cs" />
     <Compile Include="Entities\Appointment.cs" />
     <Compile Include="Entities\Barber.cs" />
     <Compile Include="Entities\Contact.cs" />
     <Compile Include="Entities\InfoStore.cs" />
-    <Compile Include="Entities\Reviewer.cs" />
     <Compile Include="Entities\Service.cs" />
     <Compile Include="Entities\StyleHair.cs" />
+    <Compile Include="Entities\User.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\DataCache.cs" />
     <Compile Include="Helper\Helpful.cs" />
-    <Compile Include="Migrations\202007161337527_Init.cs" />
-    <Compile Include="Migrations\202007161337527_Init.designer.cs">
-      <DependentUpon>202007161337527_Init.cs</DependentUpon>
+    <Compile Include="Migrations\202007190135517_Init.cs" />
+    <Compile Include="Migrations\202007190135517_Init.designer.cs">
+      <DependentUpon>202007190135517_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppoimentModel.cs" />
@@ -518,6 +521,7 @@
     <Compile Include="Models\ServiceModel.cs" />
     <Compile Include="Models\SettingModel.cs" />
     <Compile Include="Models\StyleHairModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -729,6 +733,7 @@
     <Content Include="Areas\Admin\Views\StyleHair\AddStyleHair.cshtml" />
     <Content Include="Areas\Admin\Views\StyleHair\StyleHairDetail.cshtml" />
     <Content Include="Areas\Admin\Views\StyleHair\StyleHairs.cshtml" />
+    <Content Include="Areas\Admin\Views\Contact\Index.cshtml" />
     <None Include="packages.config" />
     <None Include="Scripts\bootstrap-4.1.1.min.js.map" />
     <Content Include="fonts\Flaticon.eot" />
@@ -795,6 +800,7 @@
     <Content Include="Views\Service\Appointment.cshtml" />
     <Content Include="Views\Shared\_PageBar.cshtml" />
     <Content Include="Views\Home\Thank.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -808,8 +814,8 @@
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202007161337527_Init.resx">
-      <DependentUpon>202007161337527_Init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202007190135517_Init.resx">
+      <DependentUpon>202007190135517_Init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

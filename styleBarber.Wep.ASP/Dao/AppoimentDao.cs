@@ -21,7 +21,22 @@ namespace styleBarber.Wep.ASP.Dao
         {
             return _context.Appointments
                 .Include(item => item.Barber)
+                .Include(item => item.User)
                 .ToList();
+        }
+
+        public object GetTopBarbers()
+        {
+            return _context.Appointments
+                .Include(item => item.Barber)
+                .GroupBy(item => new { item.BarberID, item.Barber.Name })
+                .Select(item => new 
+                { 
+                    Barber = item.Key.Name, 
+                    Count = item.Count() 
+                })
+                .OrderByDescending(item => item.Count)
+                .Take(5).ToList();
         }
 
         public int Count()
@@ -39,7 +54,7 @@ namespace styleBarber.Wep.ASP.Dao
         {
             var data = _context.Appointments.Find(id);
             if (data == null) return;
-            data.Status = true;
+            data.Status = status;
             _context.SaveChangesAsync();
         }
 

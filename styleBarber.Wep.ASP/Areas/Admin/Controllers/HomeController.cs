@@ -5,14 +5,14 @@ using System.Web.Mvc;
 namespace styleBarber.Wep.ASP.Areas.Admin.Controllers
 {
     //Admin
+    [Authorize]
+
     public class HomeController : Controller
     {
         private AppoimentModel _appointmentModel = null;
-        private ContactModel _contactModel = null;
         public HomeController()
         {
             _appointmentModel = new AppoimentModel();
-            _contactModel = new ContactModel();
         }
         public ActionResult Index()
         {
@@ -20,16 +20,22 @@ namespace styleBarber.Wep.ASP.Areas.Admin.Controllers
             return View();
         }
 
-        public JsonResult GetAppoitmentByDate(string date)
+        public JsonResult GetAppoitmentByDate(string start, string end)
         {
-            var dateCr = Convert.ToDateTime(date).ToString();
-            var data = _appointmentModel.FilterByDate(Convert.ToDateTime(date));
+            DateTime dStart = Convert.ToDateTime(start);
+            DateTime dEnd = Convert.ToDateTime(end);
+            var data = _appointmentModel.FilterByDate(dStart, dEnd);
             return Json(data,JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult GetContacts()
+        public JsonResult GetTopBarber()
         {
-            return Json(_contactModel.GetContactVMs());
+            return Json(_appointmentModel.GetTopBarber(), JsonRequestBehavior.AllowGet);
+        }
+
+        public void UpdateStatus(int id, bool status)
+        {
+            _appointmentModel.Update(id, status);
         }
     }
 }

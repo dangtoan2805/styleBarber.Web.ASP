@@ -1,13 +1,8 @@
-﻿using Microsoft.Ajax.Utilities;
-using Newtonsoft.Json.Linq;
-using styleBarber.Wep.ASP.EF;
-using styleBarber.Wep.ASP.Entities;
+﻿using styleBarber.Wep.ASP.Entities;
 using styleBarber.Wep.ASP.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace styleBarber.Wep.ASP.Controllers
@@ -20,6 +15,7 @@ namespace styleBarber.Wep.ASP.Controllers
         private ServiceModel _serviceModel = null;
         private SettingModel _settingModel = null;
         private ContactModel _contactModel = null;
+        private UserModel _userModel = null;
         public HomeController()
         {
             _barberModel = new BarberModel();
@@ -27,6 +23,7 @@ namespace styleBarber.Wep.ASP.Controllers
             _serviceModel = new ServiceModel();
             _settingModel = new SettingModel();
             _contactModel = new ContactModel();
+            _userModel = new UserModel();
         }
         public ActionResult Index()
         {
@@ -36,13 +33,13 @@ namespace styleBarber.Wep.ASP.Controllers
             ViewBag.Mission = Info.Mission;
             ViewBag.Reason = Info.Reason;
             // GET STYLE HAIR
-            ViewBag.StyleHair = _stylerModel.GetStyleHairVMs();
+            ViewBag.StyleHair = _stylerModel.GetStyleHairVMs().Take(3);
             // GET SERVICES
             ViewBag.Services = _serviceModel.GetServiceVMs();
             // GET BARBERS
-            ViewBag.Barbers = _barberModel.GetBarberVMs();
+            ViewBag.Barbers = _barberModel.GetBarberVMs().Take(3);
             // GET REIVIERS
-            ViewBag.Reviewer = _settingModel.GetReviewers();
+            ViewBag.Reviewer = _contactModel.GetContactVMs();
             return View();
         }
 
@@ -50,17 +47,24 @@ namespace styleBarber.Wep.ASP.Controllers
         {
            
             ViewBag.StyleHair = new List<StyleHair>();
-            ViewBag.Reviewer = new List<Reviewer>();
+            ViewBag.Reviewer = new List<ContactVM>();
             return View();
         }
 
         public ActionResult Contact()
         {
+            if (!HttpContext.User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Account", new { url = HttpContext.Request.Path });
+            string id = User.Identity.Name;
+            ViewBag.User = _userModel.GetUser(Int32.Parse(id));
             return View();
         }
 
+
         public ActionResult SendContact(ContactVM contact)
         {
+            if (!HttpContext.User.Identity.IsAuthenticated)
+                return RedirectToAction("Contact");
             _contactModel.Add(contact);
             return RedirectToAction("Thank", "Home");
         }

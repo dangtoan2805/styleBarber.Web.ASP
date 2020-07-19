@@ -36,9 +36,9 @@ namespace styleBarber.Wep.ASP.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddBarber(BarberVM barber, HttpPostedFileBase image)
+        public ActionResult AddBarber(BarberVM barber, HttpPostedFileBase Image)
         {
-            barber.Image = Helpful.UploadImage(image, Server);
+            barber.Image = Helpful.UploadImage(Image, Server);
             _barberModel.AddBarber(barber);
             return RedirectToAction("Barbers");
         }
@@ -54,9 +54,9 @@ namespace styleBarber.Wep.ASP.Areas.Admin.Controllers
             return View(_barberModel.Detail(ID));
         }
 
-        public ActionResult UpdateBarber(int ID, BarberVM barber, HttpPostedFileBase image)
+        public ActionResult UpdateBarber(int ID, BarberVM barber, HttpPostedFileBase Image)
         {
-            barber.Image = Helpful.UploadImage(image, Server);
+            barber.Image = Helpful.UploadImage(Image, Server);
             _barberModel.Update(ID, barber);
             return RedirectToAction("Barbers");
         }

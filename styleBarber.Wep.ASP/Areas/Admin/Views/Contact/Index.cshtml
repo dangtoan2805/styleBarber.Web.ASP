@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    ViewBag.IndexNav = 4;
+}
+@model List<styleBarber.Wep.ASP.Models.ContactVM>
+<!-- MAIN CONTENT-->
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive table--no-card m-b-40">
+                        <table class="table table-borderless table-striped table-earning">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>phone</th>
+                                    <th>email</th>
+                                    <th>content</th>
+                                </tr>
+                            </thead>
+                            <tbody id="vt-contact-container">
+
+                                @for (int i = 0; i < Model.Count; i++)
+                                {
+                                    <tr>
+                                        @{ int index = i + 1;}
+                                        <td>@index</td>
+                                        <td>@Model[i].Name</td>                                
+                                        <td>@Model[i].Phone</td>                                    
+                                        <td>@Model[i].Email</td>                                   
+                                        <td>@Model[i].Review</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="copyright">
+                        <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END MAIN CONTENT-->

@@ -29,6 +29,7 @@
                             cursor: pointer; 
                             padding: 5px 10px; 
                             border: 1px solid #ccc; 
+                            max-width: max-content;
                             margin-left:auto;
                             margin-right:1rem;">
                         <i class="fa fa-calendar"></i>&nbsp;
@@ -39,6 +40,7 @@
             <!--COUNTING-->
             <div class="row m-t-25">
                 <div class="col-lg-3">
+                    <!--TOTAL-->
                     <div class="overview-item overview-item--c3">
                         <div class="overview__inner">
                             <div class="overview-box clearfix">
@@ -46,8 +48,8 @@
                                     <i class="zmdi zmdi-account-o"></i>
                                 </div>
                                 <div class="text">
-                                    <h2>10368</h2>
-                                    <span>members online</span>
+                                    <h2>@ViewBag.Total</h2>
+                                    <span>Service customer</span>
                                 </div>
                             </div>
                             <div class="overview-chart">
@@ -55,34 +57,15 @@
                             </div>
                         </div>
                     </div>
-                    <div >
-                        <div >
+                    <!--TOPBARBER-->
+                    <div>
+                        <div>
                             <h2 class="title-1 m-b-25">Top Barber book</h2>
                             <div class="au-card au-card--bg-blue au-card-top-countries m-b-40">
                                 <div class="au-card-inner">
                                     <div class="table-responsive">
                                         <table class="table table-top-countries">
-                                            <tbody>
-                                                <tr>
-                                                    <td>Barber 1</td>
-                                                    <td class="text-right">10</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Barber 2</td>
-                                                    <td class="text-right">20</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Barber 3</td>
-                                                    <td class="text-right">30</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Barber 4</td>
-                                                    <td class="text-right">40</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Barber 5</td>
-                                                    <td class="text-right">50</td>
-                                                </tr>
+                                            <tbody id="vt-topbarbers-contaniner">
                                             </tbody>
                                         </table>
                                     </div>
@@ -91,238 +74,35 @@
                         </div>
                     </div>
                 </div>
-                <!--CHART-->
+                <!--APPOINTMENTA-->
                 <div class="col-lg-9">
                     <div class="col-12">
-                        <div class="au-card m-b-30">
-                            <div class="au-card-inner">
-                                <h3 class="title-2 m-b-40">Team Commits</h3>
-                                <canvas id="team-chart"></canvas>
-                            </div>
+                        <div class="table-responsive table--no-card m-b-40">
+                            <table class="table table-borderless table-striped table-earning">
+                                <thead>
+                                    <tr>
+                                        <th>date</th>
+                                        <th>time</th>
+                                        <th>name</th>
+                                        <th>phone</th>
+                                        <th>barber</th>
+                                        <th>status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="data-container-apppointment" >
+                                    <tr>
+                                        <td colspan="7" class="text-center">Không có dữ liệu</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="row  m-b-25">
-                        <div class="col-6">
-                            <h2 class="title-1">Khách đặt lịch</h2>
-                        </div>
-                        <div class="col-6 text-right">
-                            <div class="form-control" style="
-                            background: #fff;
-                            cursor: pointer;
-                            padding: 5px 10px;
-                            border: 1px solid #ccc;
-                            width: max-content;
-                            margin-left:auto;
-                            margin-right:1rem;">
-                                <i class="fa fa-calendar"></i>&nbsp;
-                                <input type="text" name="appointment" value="01/01/2018" />
-                                <i class="fa fa-caret-down"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="table-responsive table--no-card m-b-40">
-                        <table class="table table-borderless table-striped table-earning">
-                            <thead>
-                                <tr>
-                                    <th>date</th>
-                                    <th>time</th>
-                                    <th>name</th>
-                                    <th>phone</th>
-                                    <th>barber</th>
-                                    <th>note</th>
-                                    <th>status</th>
-                                </tr>
-                            </thead>
-                            <tbody id="data-container-apppointment">
-                               <tr>
-                                   <td colspan="7" class="text-center">Không có dữ liệu</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="au-card au-card--no-shadow au-card--no-pad m-b-40">
-                        <div class="au-card-title" style="background-image:url('images/bg-title-02.jpg');">
-                            <div class="bg-overlay bg-overlay--blue"></div>
-                            <h3>
-                                <i class="zmdi zmdi-comment-text"></i>New Messages
-                            </h3>
-                        </div>
-                        <div class="au-inbox-wrap js-inbox-wrap">
-                            <div class="au-message js-list-load">
-                                <div class="au-message__noti">
-                                    <p>
-                                        You Have
-                                        <span>2</span>
-                                        new messages
-                                    </p>
-                                </div>
-                                <div class="au-message-list">
-                                    <div class="au-message__item unread">
-                                        <div class="au-message__item-inner">
-                                            <div class="au-message__item-text">
-                                                <div class="avatar-wrap">
-                                                    <div class="avatar">
-                                                        <img src="~/Uploads/avatar-02.jpg" alt="John Smith">
-                                                    </div>
-                                                </div>
-                                                <div class="text">
-                                                    <h5 class="name">John Smith</h5>
-                                                    <p>Have sent a photo</p>
-                                                </div>
-                                            </div>
-                                            <div class="au-message__item-time">
-                                                <span>12 Min ago</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="au-message__item unread">
-                                        <div class="au-message__item-inner">
-                                            <div class="au-message__item-text">
-                                                <div class="avatar-wrap online">
-                                                    <div class="avatar">
-                                                        <img src="~/Uploads/avatar-03.jpg" alt="Nicholas Martinez">
-                                                    </div>
-                                                </div>
-                                                <div class="text">
-                                                    <h5 class="name">Nicholas Martinez</h5>
-                                                    <p>You are now connected on message</p>
-                                                </div>
-                                            </div>
-                                            <div class="au-message__item-time">
-                                                <span>11:00 PM</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="au-message__item">
-                                        <div class="au-message__item-inner">
-                                            <div class="au-message__item-text">
-                                                <div class="avatar-wrap online">
-                                                    <div class="avatar">
-                                                        <img src="~/Uploads/avatar-04.jpg" alt="Michelle Sims">
-                                                    </div>
-                                                </div>
-                                                <div class="text">
-                                                    <h5 class="name">Michelle Sims</h5>
-                                                    <p>Lorem ipsum dolor sit amet</p>
-                                                </div>
-                                            </div>
-                                            <div class="au-message__item-time">
-                                                <span>Yesterday</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="au-message__item">
-                                        <div class="au-message__item-inner">
-                                            <div class="au-message__item-text">
-                                                <div class="avatar-wrap">
-                                                    <div class="avatar">
-                                                        <img src="~/Uploads/avatar-05.jpg" alt="Michelle Sims">
-                                                    </div>
-                                                </div>
-                                                <div class="text">
-                                                    <h5 class="name">Michelle Sims</h5>
-                                                    <p>Purus feugiat finibus</p>
-                                                </div>
-                                            </div>
-                                            <div class="au-message__item-time">
-                                                <span>Sunday</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="au-message__item js-load-item">
-                                        <div class="au-message__item-inner">
-                                            <div class="au-message__item-text">
-                                                <div class="avatar-wrap online">
-                                                    <div class="avatar">
-                                                        <img src="~/Uploads/avatar-04.jpg" alt="Michelle Sims">
-                                                    </div>
-                                                </div>
-                                                <div class="text">
-                                                    <h5 class="name">Michelle Sims</h5>
-                                                    <p>Lorem ipsum dolor sit amet</p>
-                                                </div>
-                                            </div>
-                                            <div class="au-message__item-time">
-                                                <span>Yesterday</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="au-message__item js-load-item">
-                                        <div class="au-message__item-inner">
-                                            <div class="au-message__item-text">
-                                                <div class="avatar-wrap">
-                                                    <div class="avatar">
-                                                        <img src="~/Uploads/avatar-05.jpg" alt="Michelle Sims">
-                                                    </div>
-                                                </div>
-                                                <div class="text">
-                                                    <h5 class="name">Michelle Sims</h5>
-                                                    <p>Purus feugiat finibus</p>
-                                                </div>
-                                            </div>
-                                            <div class="au-message__item-time">
-                                                <span>Sunday</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="au-message__footer">
-                                    <button class="au-btn au-btn-load js-load-btn">load more</button>
-                                </div>
-                            </div>
-                            <div class="au-chat">
-                                <div class="au-chat__title">
-                                    <div class="au-chat-info">
-                                        <div class="avatar-wrap online">
-                                            <div class="avatar avatar--small">
-                                                <img src="~/Uploads/avatar-02.jpg" alt="John Smith">
-                                            </div>
-                                        </div>
-                                        <span class="nick">
-                                            <a href="#">John Smith</a>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="au-chat__content">
-                                    <div class="recei-mess-wrap">
-                                        <span class="mess-time">12 Min ago</span>
-                                        <div class="recei-mess__inner">
-                                            <div class="avatar avatar--tiny">
-                                                <img src="~/Uploads/avatar-02.jpg" alt="John Smith">
-                                            </div>
-                                            <div class="recei-mess-list">
-                                                <div class="recei-mess">Lorem ipsum dolor sit amet, consectetur adipiscing elit non iaculis</div>
-                                                <div class="recei-mess">Donec tempor, sapien ac viverra</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="send-mess-wrap">
-                                        <span class="mess-time">30 Sec ago</span>
-                                        <div class="send-mess__inner">
-                                            <div class="send-mess-list">
-                                                <div class="send-mess">Lorem ipsum dolor sit amet, consectetur adipiscing elit non iaculis</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="au-chat-textfield">
-                                    <form class="au-form-icon">
-                                        <input class="au-input au-input--full au-input--h65" type="text" placeholder="Type a message">
-                                        <button class="au-input-icon">
-                                            <i class="zmdi zmdi-camera"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="d-flex justify-content-end align-items-center">
+                        <nav class="pr-4">
+                            <ul id="vt-pagination" class="pagination pagination-sm justify-content-center">
+                            </ul>
+                        </nav>
+                        <p class="text-secondary pl-4 "><span id="vt-total">0</span> đơn hàng</p>
                     </div>
                 </div>
             </div>

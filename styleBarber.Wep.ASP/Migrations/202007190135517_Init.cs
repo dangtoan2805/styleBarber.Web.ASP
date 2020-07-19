@@ -13,16 +13,15 @@
                     {
                         ID = c.Int(nullable: false, identity: true),
                         Date = c.DateTime(nullable: false),
-                        FirstName = c.String(),
-                        LastName = c.String(maxLength: 25),
-                        Email = c.String(maxLength: 100),
-                        Phone = c.String(),
-                        Note = c.String(maxLength: 350),
+                        Note = c.String(),
                         Status = c.Boolean(nullable: false),
-                        BarberID = c.Int(nullable: false),
+                        UserID = c.Int(),
+                        BarberID = c.Int(),
                     })
                 .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.Barbers", t => t.BarberID, cascadeDelete: true)
+                .ForeignKey("dbo.Barbers", t => t.BarberID)
+                .ForeignKey("dbo.Users", t => t.UserID)
+                .Index(t => t.UserID)
                 .Index(t => t.BarberID);
             
             CreateTable(
@@ -41,17 +40,32 @@
                 .PrimaryKey(t => t.ID);
             
             CreateTable(
+                "dbo.Users",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        Password = c.String(),
+                        isAdmin = c.Boolean(nullable: false),
+                        FirstName = c.String(),
+                        LastName = c.String(maxLength: 25),
+                        Email = c.String(maxLength: 100),
+                        Phone = c.String(maxLength: 15),
+                        Image = c.String(maxLength: 150),
+                        Job = c.String(maxLength: 50),
+                    })
+                .PrimaryKey(t => t.ID);
+            
+            CreateTable(
                 "dbo.Contacts",
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
-                        FirstName = c.String(maxLength: 25),
-                        LastName = c.String(maxLength: 25),
-                        Email = c.String(maxLength: 100),
-                        Phone = c.String(),
-                        Note = c.String(maxLength: 350),
+                        Review = c.String(maxLength: 350),
+                        UserID = c.Int(),
                     })
-                .PrimaryKey(t => t.ID);
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.Users", t => t.UserID)
+                .Index(t => t.UserID);
             
             CreateTable(
                 "dbo.InfoStores",
@@ -62,18 +76,6 @@
                         About = c.String(maxLength: 350),
                         Mission = c.String(maxLength: 350),
                         Reason = c.String(maxLength: 350),
-                    })
-                .PrimaryKey(t => t.ID);
-            
-            CreateTable(
-                "dbo.Reviewers",
-                c => new
-                    {
-                        ID = c.Int(nullable: false, identity: true),
-                        Name = c.String(maxLength: 50),
-                        Image = c.String(maxLength: 25),
-                        Job = c.String(maxLength: 50),
-                        Review = c.String(maxLength: 350),
                     })
                 .PrimaryKey(t => t.ID);
             
@@ -104,13 +106,17 @@
         
         public override void Down()
         {
+            DropForeignKey("dbo.Appointments", "UserID", "dbo.Users");
+            DropForeignKey("dbo.Contacts", "UserID", "dbo.Users");
             DropForeignKey("dbo.Appointments", "BarberID", "dbo.Barbers");
+            DropIndex("dbo.Contacts", new[] { "UserID" });
             DropIndex("dbo.Appointments", new[] { "BarberID" });
+            DropIndex("dbo.Appointments", new[] { "UserID" });
             DropTable("dbo.StyleHairs");
             DropTable("dbo.Services");
-            DropTable("dbo.Reviewers");
             DropTable("dbo.InfoStores");
             DropTable("dbo.Contacts");
+            DropTable("dbo.Users");
             DropTable("dbo.Barbers");
             DropTable("dbo.Appointments");
         }

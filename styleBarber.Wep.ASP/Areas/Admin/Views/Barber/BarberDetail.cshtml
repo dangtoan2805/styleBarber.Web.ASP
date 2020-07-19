@@ -1,92 +1,105 @@
 ﻿@{
     ViewBag.Title = "BarberDetail";
 }
+@model styleBarber.Wep.ASP.Models.BarberVM
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
 
-<div class="card">
-    <div class="card-header">
-        <strong>Basic Form</strong> Elements
-    </div>
-    <div class="card-body card-block">
-        <form action="/Admin/Barber/UpdateBarber/@Model.ID" method="post" enctype="multipart/form-data" class="form-horizontal">
-            <div class="row form-group">
-                <div class="col col-md-3">
-                    <label for="file-input" class=" form-control-label">Hình Ảnh</label>
+            <div class="card">
+                <div class="card-header">
+                    <strong>Thông tin Barber</strong>
                 </div>
-                <div class="col-12 col-md-9">
-                    <input type="file" id="file-input" name="Image" class="form-control-file" value="@Model.Image">
-                </div>
-            </div>
-            <div class="row form-group">
-                <div class="col col-md-3">
-                    <label class=" form-control-label">Chức Vụ</label>
-                </div>
-                <div class="col col-md-9">
-                    <div class="form-check">
-                        <div class="radio">
-                            <label for="radio1" class="form-check-label ">
-                                <input type="radio" id="radio1" name="radios" value="option1" class="form-check-input">Người Sáng Lập
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label for="radio2" class="form-check-label ">
-                                <input type="radio" id="radio2" name="radios" value="option2" class="form-check-input">Nhân Viên
-                            </label>
-                        </div>
+                <div class="card-body card-block">
 
-                    </div>
+                    <form action="/Admin/Barber/UpdateBarber/@Model.ID" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="file-input" class=" form-control-label">Hình Ảnh</label>
+                            </div>
+                            <div class="col col-md-3">
+                                <img src="~/Uploads/@Model.Image" />
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <input type="file" id="file-input" name="Image" class="form-control-file" value="@Model.Image">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label class=" form-control-label">Chức Vụ</label>
+                            </div>
+                            <div class="col col-md-9">
+                                <div class="form-check">
+                                    <div class="radio">
+                                        <label for="radio1" class="form-check-label ">
+                                            <input type="radio" id="radio1" name="isFounder" value="@Model.isFounder" class="form-check-input">Người Sáng Lập
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label for="radio2" class="form-check-label ">
+                                            @{ var founder = !Model.isFounder;}
+                                            <input type="radio" name="isFounder" value="@founder" class="form-check-input">Nhân Viên
+                                        </label>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="text-input" class=" form-control-label">Tên</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input type="text" id="text-input" name="Name" class="form-control" value="@Model.Name">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="textarea-input" class=" form-control-label">Thông Tin</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <textarea name="Info" id="textarea-input" rows="9" placeholder="Nhập Thông Tin..." class="form-control">@Model.Info</textarea>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="email-input" class=" form-control-label">Facebook</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input type="text" id="email-input" name="LinkFB" placeholder="Nhập Facebook" class="form-control" value="@Model.LinkFB">
+                                <small class="help-block form-text">Vui Lòng Nhập Facebook</small>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="email-input" class=" form-control-label">Email</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input type="email" id="email-input" name="Email" placeholder="Nhập Email" class="form-control" value="@Model.Email">
+                                <small class="help-block form-text">Vui Lòng Nhập email</small>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="email-input" class=" form-control-label">Twitter</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input type="email" id="email-input" name="Twitter" placeholder="Nhập Twitter" class="form-control" value="@Model.Twitter">
+                                <small class="help-block form-text">Vui Lòng Nhập Twitter</small>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary btn-sm">
+                                <i class="fa fa-dot-circle-o"></i> Gửi
+                            </button>
+                            <button type="reset" class="btn btn-danger btn-sm">
+                                <i class="fa fa-ban"></i> Đặt Lại
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <div class="row form-group">
-                <div class="col col-md-3">
-                    <label for="text-input" class=" form-control-label">Tên</label>
-                </div>
-                <div class="col-12 col-md-9">
-                    <input type="text" id="text-input" name="Name" class="form-control" value="@Model.Name">
-                </div>
-            </div>
-            <div class="row form-group">
-                <div class="col col-md-3">
-                    <label for="textarea-input" class=" form-control-label">Thông Tin</label>
-                </div>
-                <div class="col-12 col-md-9">
-                    <textarea name="Info" id="textarea-input" rows="9" placeholder="Nhập Thông Tin..." class="form-control">@Model.Info</textarea>
-                </div>
-            </div>
-            <div class="row form-group">
-                <div class="col col-md-3">
-                    <label for="email-input" class=" form-control-label">Facebook</label>
-                </div>
-                <div class="col-12 col-md-9">
-                    <input type="text" id="email-input" name="LinkFB" placeholder="Nhập Facebook" class="form-control" value="@Model.LinkFB">
-                    <small class="help-block form-text">Vui Lòng Nhập Facebook</small>
-                </div>
-            </div>
-            <div class="row form-group">
-                <div class="col col-md-3">
-                    <label for="email-input" class=" form-control-label">Email</label>
-                </div>
-                <div class="col-12 col-md-9">
-                    <input type="email" id="email-input" name="Email" placeholder="Nhập Email" class="form-control" value="@Model.Email">
-                    <small class="help-block form-text">Vui Lòng Nhập email</small>
-                </div>
-            </div>
-            <div class="row form-group">
-                <div class="col col-md-3">
-                    <label for="email-input" class=" form-control-label">Twitter</label>
-                </div>
-                <div class="col-12 col-md-9">
-                    <input type="email" id="email-input" name="Twitter" placeholder="Nhập Twitter" class="form-control" value="@Model.Twitter">
-                    <small class="help-block form-text">Vui Lòng Nhập Twitter</small>
-                </div>
-            </div>
-            <div class="card-footer">
-                <button type="submit" class="btn btn-primary btn-sm">
-                    <i class="fa fa-dot-circle-o"></i> Gửi
-                </button>
-                <button type="reset" class="btn btn-danger btn-sm">
-                    <i class="fa fa-ban"></i> Đặt Lại
-                </button>
-            </div>
-        </form>
+        </div>
     </div>
 </div>
+                

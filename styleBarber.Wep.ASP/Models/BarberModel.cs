@@ -58,6 +58,8 @@ namespace styleBarber.Wep.ASP.Models
         {
             return GetBarberVMs().FindAll(item => item.Name.Contains(name));
         }
+
+
         
         public BarberVM Detail(int id) 
         {

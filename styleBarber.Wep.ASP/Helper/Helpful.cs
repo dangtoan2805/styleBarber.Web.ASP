@@ -14,7 +14,7 @@ namespace styleBarber.Wep.ASP.Helper
             if (file != null)
             {
                 img = file.FileName;
-                var path = Path.Combine(server.MapPath("~/Upload"), img);
+                var path = Path.Combine(server.MapPath("~/Uploads"), img);
                 file.SaveAs(path);
             }
             return img;

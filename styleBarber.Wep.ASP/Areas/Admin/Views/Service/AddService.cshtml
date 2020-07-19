@@ -2,58 +2,60 @@
     ViewBag.Title = "AddServices";
 }
 
-<div class="card">
-    <div class="card-header">
-        <strong>Basic Form</strong> Elements
+
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Basic Form</strong> Elements
+                </div>
+                <div class="card-body card-block">
+                    <form action="/Admin/Service/AddService" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="file-input" class=" form-control-label">Hình Ảnh</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input type="file" id="file-input" name="Image" class="form-control-file">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="text-input" class=" form-control-label">Tên</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input type="text" id="text-input" name="Name" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="textarea-input" class=" form-control-label">Mô Tả</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <textarea name="ServiceDescription" id="textarea-input" rows="9" placeholder="Mô Tả Dịch Vụ..." class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="text-input" class=" form-control-label">Giá</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input type="text" id="text-input" name="Price" class="form-control">
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary btn-sm">
+                                <i class="fa fa-dot-circle-o"></i> Gửi
+                            </button>
+                            <button type="reset" class="btn btn-danger btn-sm">
+                                <i class="fa fa-ban"></i> Đặt Lại
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="card-body card-block">
-        <form action="/Admin/Service/AddService" method="post" enctype="multipart/form-data" class="form-horizontal">
-            <div class="row form-group">
-                <div class="col col-md-3">
-                    <label for="file-input" class=" form-control-label">Hình Ảnh</label>
-                </div>
-                <div class="col-12 col-md-9">
-                    <input type="file" id="file-input" name="Image" class="form-control-file">
-                </div>
-            </div>
-            <div class="row form-group">
-                <div class="col col-md-3">
-                    <label for="text-input" class=" form-control-label">Tên</label>
-                </div>
-                <div class="col-12 col-md-9">
-                    <input type="text" id="text-input" name="Name" class="form-control">
-                </div>
-            </div>
-            <div class="row form-group">
-                <div class="col col-md-3">
-                    <label for="textarea-input" class=" form-control-label">Mô Tả</label>
-                </div>
-                <div class="col-12 col-md-9">
-                    <textarea name="ServiceDescription" id="textarea-input" rows="9" placeholder="Mô Tả Dịch Vụ..." class="form-control"></textarea>
-                </div>
-            </div>
-            <div class="row form-group">
-                <div class="col col-md-3">
-                    <label for="text-input" class=" form-control-label">Giá</label>
-                </div>
-                <div class="col-12 col-md-9">
-                    <input type="text" id="text-input" name="Price"class="form-control">
-                </div>
-            </div>
-            <div class="card-footer">
-                <button type="submit" class="btn btn-primary btn-sm">
-                    <i class="fa fa-dot-circle-o"></i> Gửi
-                </button>
-                <button type="reset" class="btn btn-danger btn-sm">
-                    <i class="fa fa-ban"></i> Đặt Lại
-                </button>
-            </div>
-        </form>
-
-
-
-    </div>
-
-
-
 </div>
+           

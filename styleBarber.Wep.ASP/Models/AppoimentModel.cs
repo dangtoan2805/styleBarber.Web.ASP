@@ -24,7 +24,9 @@ namespace styleBarber.Wep.ASP.Models
                 cfg.CreateMap<Appointment, AppointmentVM>()
                     .ForMember(des => des.BarberName, act => act.MapFrom(src => src.Barber.Name))
                     .ForMember(des => des.DateCheckOut, act => act.MapFrom(src => src.Date.ToShortDateString()))
-                    .ForMember(des => des.Time, act => act.MapFrom(src => src.Date.ToShortTimeString()));
+                    .ForMember(des => des.Time, act => act.MapFrom(src => src.Date.ToShortTimeString()))
+                    .ForMember(des => des.Name, act => act.MapFrom(src => src.User.FirstName + " " + src.User.LastName))
+                    .ForMember(des => des.Phone, act => act.MapFrom(src => src.User.Phone));
                 cfg.CreateMap<AppointmentVM, Appointment>()
                     .ForMember(des => des.Date, act => act.MapFrom(src => Convert.ToDateTime(src.DateCheckOut + src.Time)));
             }).CreateMapper();
@@ -49,6 +51,7 @@ namespace styleBarber.Wep.ASP.Models
             DataCache.SetInCache(countAppoitment, rawTotal);
             return rawTotal;
         }
+
         public int CountTotal()
         {
             if (_isModified)
@@ -67,19 +70,20 @@ namespace styleBarber.Wep.ASP.Models
             return data;
         }
 
-        public List<AppointmentVM> FilterByDate(DateTime date)
+        public object GetTopBarber()
+        {
+            return _db.GetTopBarbers();
+        }
+
+        public List<AppointmentVM> FilterByDate(DateTime start, DateTime  end)
         {
             return GetAppointmentVMs()
-                .Where(item => Convert.ToDateTime(item.DateCheckOut).Date == date.Date)
+                .Where(item => Convert.ToDateTime(item.DateCheckOut).Date >= start.Date
+                        && Convert.ToDateTime(item.DateCheckOut).Date <= end.Date)
+                .OrderByDescending(item => item.ID)
                 .ToList();
         }
 
-        public List<AppointmentVM> FilterByWeek(DateTime start, DateTime  end)
-        {
-            return GetAppointmentVMs()
-                .Where(item => Convert.ToDateTime(item.DateCheckOut).Date >= start.Date && Convert.ToDateTime(item.DateCheckOut).Date <= end.Date.AddDays(1))
-                .ToList();
-        }
 
         public void Add(AppointmentVM appointment)
         {
@@ -108,19 +112,18 @@ namespace styleBarber.Wep.ASP.Models
             };
         }
 
-
     }
     public class AppointmentVM
     {
         public int ID { get; set; }
         public string DateCheckOut { get; set; }
         public string Time { get; set; }
-        public string FisrtName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
+        public string Name { get; set; }
         public string Phone { get; set; }
         public string Note { get; set; }
+        public bool Status { get; set; }
         public string BarberName { get; set; }
         public int BarberID { get; set; }
+        public int UserID { get; set; }
     }
 }

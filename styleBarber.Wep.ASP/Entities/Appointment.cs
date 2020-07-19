@@ -10,20 +10,15 @@ namespace styleBarber.Wep.ASP.Entities
         [Key]
         public int ID { get; set; }
         public DateTime Date { get; set; }
-        public string FirstName { get; set; }
-        [MaxLength(25)]
-        public string LastName { get; set; }
-        [MaxLength(100)]
-        public string Email { get; set; }
-        public string Phone { get; set; }
-        [MaxLength(350)]
         public string Note { get; set; }
-        [DefaultValue(false)]
-        public bool Status { get; set; }
         //Frogien Key
+        public bool Status { get; set; }
+        [ForeignKey("User")]
+        public int? UserID {get;set;}
         [ForeignKey("Barber")]
-        public int BarberID { get; set; }
+        public int? BarberID { get; set; }
         //Nav
         public Barber Barber { get; set; }
+        public User User { get; set; }
     }
 }

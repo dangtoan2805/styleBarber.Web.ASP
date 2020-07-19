@@ -20,7 +20,12 @@ namespace styleBarber.Wep.ASP.Models
             _db = new ContactDao();
             _mapper = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<Contact, ContactVM>();
+                cfg.CreateMap<Contact, ContactVM>()
+                    .ForMember(des => des.Name, act => act.MapFrom(src => src.User.FirstName + " " + src.User.LastName))
+                    .ForMember(des => des.Phone, act => act.MapFrom(src => src.User.Phone))
+                    .ForMember(des => des.Email, act => act.MapFrom(src => src.User.Email))
+                    .ForMember(des => des.Image, act => act.MapFrom(src => src.User.Image))
+                    .ForMember(des => des.Job, act => act.MapFrom(src => src.User.Job));
                 cfg.CreateMap<ContactVM, Contact>();
             }).CreateMapper();
         }
@@ -57,10 +62,12 @@ namespace styleBarber.Wep.ASP.Models
     }
     public class ContactVM
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public int Phone { get; set; }
+        public string Name { get; set; }
+        public string Job { get; set; }
+        public string Image { get; set; }
+        public string Phone { get; set; }
         public string Email { get; set; }
-        public string Note { get; set; }
+        public string Review { get; set; }
+        public string UserID { get; set; }
     }
 }

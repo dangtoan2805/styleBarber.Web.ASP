@@ -9,7 +9,6 @@ namespace styleBarber.Wep.ASP.Models
     {
         private SettingDao _db = null;
         private const string infoKey = "info";
-        private const string reviewerKey = "reviewer";
         private bool isModified = true;
         public SettingModel()
         {
@@ -22,15 +21,6 @@ namespace styleBarber.Wep.ASP.Models
             var rawData = _db.GetInfo();
             if (rawData == null) return new InfoStore();
             DataCache.SetInCache(infoKey, rawData);
-            return rawData;
-        }
-
-        private List<Reviewer> GetReviewerData()
-        {
-            isModified = false;
-            var rawData = _db.GetReviewers();
-            if (rawData == null) return rawData;
-            DataCache.SetInCache(reviewerKey, rawData);
             return rawData;
         }
 
@@ -49,17 +39,6 @@ namespace styleBarber.Wep.ASP.Models
         {
             if (info == null) return;
             _db.Update(info);
-        }
-
-        public List<Reviewer> GetReviewers()
-        {
-            if (isModified)
-                return GetReviewerData();
-            var data = DataCache.GetInCache<List<Reviewer>>(reviewerKey);
-            if (data == null)
-                return GetReviewerData();
-            else
-                return data;
         }
     }
 }

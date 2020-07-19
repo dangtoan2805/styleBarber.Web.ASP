@@ -13,7 +13,7 @@ namespace styleBarber.Wep.ASP.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202007161337527_Init"; }
+            get { return "202007190135517_Init"; }
         }
         
         string IMigrationMetadata.Source
