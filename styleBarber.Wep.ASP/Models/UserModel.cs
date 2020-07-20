@@ -1,10 +1,7 @@
 ﻿using AutoMapper;
 using styleBarber.Wep.ASP.Dao;
 using styleBarber.Wep.ASP.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.ComponentModel.DataAnnotations;
 using System.Web.Security;
 
 namespace styleBarber.Wep.ASP.Models
@@ -18,8 +15,7 @@ namespace styleBarber.Wep.ASP.Models
             _db = new UserDao();
             _mapper = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<User, UserVM>()
-                   .ForMember(des => des.Name, act => act.MapFrom(src => src.FirstName + " " + src.LastName));
+                cfg.CreateMap<User, UserVM>();
                 cfg.CreateMap<UserVM, User>();
             }).CreateMapper();
         }
@@ -43,6 +39,11 @@ namespace styleBarber.Wep.ASP.Models
             return _mapper.Map<UserVM>(obj);
         }
 
+        public bool CheckEmail(string email)
+        {
+           return  !_db.CheckEmail(email);
+        }
+
         public void UserLogout()
         {
             FormsAuthentication.SignOut();
@@ -56,13 +57,24 @@ namespace styleBarber.Wep.ASP.Models
             _db.AddUser(user);
         }
 
+        public void ChangePassword(int id, string pass)
+        {
+            if (id == 0) return;
+           _db.Update(id, pass);
+        }
+
     }
     public class UserVM
     {   
         public int ID { get; set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
+        [Required(ErrorMessage = "Required enter LastName")]
+        public string LastName { get; set; }
+        [Required(ErrorMessage = "Required enter FirstName")]
+        public string FirstName { get; set; }
+        [StringLength(11,MinimumLength =10,ErrorMessage ="Phone number is 10 or 11 numbers")]
         public string Phone { get; set; }
+        [Required(ErrorMessage = "Required enter Email")]
+        public string Email { get; set; }
         public string Image { get; set; }
         public string Job { get; set; }
     }

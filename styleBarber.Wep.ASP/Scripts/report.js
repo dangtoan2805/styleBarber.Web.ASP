@@ -98,6 +98,7 @@
             });
         });
     }
+
     //Pagination
     function getPage(page) {
         let start = (page - 1) * pageItems;

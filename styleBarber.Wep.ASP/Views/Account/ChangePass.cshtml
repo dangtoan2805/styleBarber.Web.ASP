@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+    <div class="section wb">
+        <div class="container">
+            <h2 class="text-center">Change Password</h2>
+            <div class="row align-items-center">
+                <form class="mx-auto" action="/Account/ChangePass" method="post">
+                    @Html.ValidationMessage("PassCorrect", new { @class = "text-danger" })
+                    <input type="hidden" value="@ViewBag.UserID" name="id" />
+                    <div class="form-group">
+                        <label for="pass">Email address</label>
+                        <input type="password" class="form-control" id="pass" name="pass" placeholder="Enter email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="re_pass">Password</label>
+                        <input type="password" class="form-control" id="re_pass" name="re_pass" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Change</button>
+                </form>
+            </div>
+        </div>
+        <a class="text-center d-block" href="/Home/Index">Trở về</a>
+    </div>

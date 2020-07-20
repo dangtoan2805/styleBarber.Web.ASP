@@ -33,6 +33,7 @@ namespace styleBarber.Wep.ASP.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult AddService(ServiceVM service,HttpPostedFileBase Image)
         {
+            if (!ModelState.IsValid) return View("AddService");
             service.Image = Helpful.UploadImage(Image, Server);
             _serviceModel.AddService(service);
             return RedirectToAction("Services");
@@ -51,6 +52,7 @@ namespace styleBarber.Wep.ASP.Areas.Admin.Controllers
 
         public ActionResult UpdateService(int ID, ServiceVM service, HttpPostedFileBase Image)
         {
+            if (!ModelState.IsValid) return View("ServiceDetail", ID);
             service.Image = Helpful.UploadImage(Image, Server);
             _serviceModel.Update(ID, service);
             return RedirectToAction("Services");

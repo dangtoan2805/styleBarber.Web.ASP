@@ -1,15 +1,9 @@
-﻿using styleBarber.Wep.ASP.Entities;
-using styleBarber.Wep.ASP.Helper;
+﻿using styleBarber.Wep.ASP.Helper;
 using styleBarber.Wep.ASP.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Security.Policy;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using System.Web.UI;
 
 namespace styleBarber.Wep.ASP.Controllers
 {
@@ -41,7 +35,7 @@ namespace styleBarber.Wep.ASP.Controllers
             switch (_userModel.UserLogin(email, password))
             {
                 case 0:
-                    return RedirectToRoute(new { area = "Admin", controller = "Home" });
+                    return RedirectToRoute(new { area="Admin", controller ="Home", action="Index" });
                 case 1:
                     return RedirectToAction(action, controller);
                 default:
@@ -54,12 +48,21 @@ namespace styleBarber.Wep.ASP.Controllers
             return View(new UserVM());
         }
 
-
         [HttpPost]
         public ActionResult Register(UserVM user, string password, string re_password, HttpPostedFileBase File)
         {
-            if (password != re_password)
+            if(!ModelState.IsValid)
                 return View("Register", user);
+            if (password != re_password)
+            {
+                ModelState.AddModelError("PassCorrect", "Password or Re-Password not Correct");
+                return View("Register", user);
+            }
+            if (_userModel.CheckEmail(user.Email))
+            {
+                ModelState.AddModelError("Exists", "Email exists");
+                return View("Register", user);
+            }
             user.Image = Helpful.UploadImage(File, Server);
             _userModel.AddUser(user,password);
             return RedirectToAction("Index","Account");
@@ -67,6 +70,26 @@ namespace styleBarber.Wep.ASP.Controllers
 
         public ActionResult Logout()
         {
+            _userModel.UserLogout();
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult ChangePass()
+        {
+            _userModel.UserLogout();
+            ViewBag.UserID= User.Identity.Name;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ChangePass(string id,string pass, string re_pass)
+        {
+            if (pass != re_pass) 
+            {
+                ModelState.AddModelError("PassCorrect", "Password or Re-Password not Correct");
+                return View("ChangePass");
+            }
+            _userModel.ChangePassword(Int32.Parse(id),pass);
             _userModel.UserLogout();
             return RedirectToAction("Index", "Home");
         }

@@ -3,6 +3,7 @@ using styleBarber.Wep.ASP.Dao;
 using styleBarber.Wep.ASP.Entities;
 using styleBarber.Wep.ASP.Helper;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace styleBarber.Wep.ASP.Models
@@ -98,9 +99,12 @@ namespace styleBarber.Wep.ASP.Models
     public class BarberVM
     { 
         public int ID { get; set; }
+        [Required(ErrorMessage = "Required enter Name")]
         public string Name { get; set; }
         public bool isFounder { get; set; }
+        [Required(ErrorMessage = "Required upload Image")]
         public string Image { get; set; }
+        [Required(ErrorMessage = "Required enter Infomation")]
         public string Info { get; set; }
         public string LinkFB { get; set; }
         public string Email { get; set; }

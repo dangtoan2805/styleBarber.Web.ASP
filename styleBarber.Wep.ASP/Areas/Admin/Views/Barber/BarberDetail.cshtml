@@ -21,7 +21,7 @@
                                 <img src="~/Uploads/@Model.Image" />
                             </div>
                             <div class="col-12 col-md-6">
-                                <input type="file" id="file-input" name="Image" class="form-control-file" value="@Model.Image">
+                                <input type="file" id="file-input" name="Image" class="form-control-file" value="@Model.Image" >
                             </div>
                         </div>
                         <div class="row form-group">
@@ -50,7 +50,8 @@
                                 <label for="text-input" class=" form-control-label">Tên</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="text" id="text-input" name="Name" class="form-control" value="@Model.Name">
+                                <input type="text" id="text-input" name="Name" class="form-control" value="@Model.Name" required>
+                                @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="row form-group">
@@ -58,7 +59,8 @@
                                 <label for="textarea-input" class=" form-control-label">Thông Tin</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <textarea name="Info" id="textarea-input" rows="9" placeholder="Nhập Thông Tin..." class="form-control">@Model.Info</textarea>
+                                <textarea name="Info" id="textarea-input" rows="9" placeholder="Nhập Thông Tin..." class="form-control" required>@Model.Info</textarea>
+                                @Html.ValidationMessageFor(m => m.Info, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="row form-group">

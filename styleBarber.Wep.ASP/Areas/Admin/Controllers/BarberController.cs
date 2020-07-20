@@ -22,12 +22,6 @@ namespace styleBarber.Wep.ASP.Areas.Admin.Controllers
             ViewBag.Barbers = _barberModel.Find(ten);
             return View("Barbers");
         }
-        public ActionResult Filter(int level)
-        {
-            if (level < 2)
-                ViewBag.Barbers = _barberModel.Filter(level == 1);
-            return View("Barbers");
-        }
 
         [HttpGet]
         public ActionResult AddBarber()
@@ -38,6 +32,7 @@ namespace styleBarber.Wep.ASP.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult AddBarber(BarberVM barber, HttpPostedFileBase Image)
         {
+            if (!ModelState.IsValid) return View("AddBarber",barber);
             barber.Image = Helpful.UploadImage(Image, Server);
             _barberModel.AddBarber(barber);
             return RedirectToAction("Barbers");
@@ -56,6 +51,7 @@ namespace styleBarber.Wep.ASP.Areas.Admin.Controllers
 
         public ActionResult UpdateBarber(int ID, BarberVM barber, HttpPostedFileBase Image)
         {
+            if (!ModelState.IsValid) return View("AddBarber", barber);
             barber.Image = Helpful.UploadImage(Image, Server);
             _barberModel.Update(ID, barber);
             return RedirectToAction("Barbers");

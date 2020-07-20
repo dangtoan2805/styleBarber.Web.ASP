@@ -15,33 +15,31 @@
                         
                         <div class="row form-group">
                             <div class="col col-md-3">
-                                <label for="text-input" class=" form-control-label">Text Input</label>
+                                <label for="text-input" class=" form-control-label">About</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="text" id="text-input" name="@Model.About" placeholder="Text" class="form-control" required>
+                                <textarea id="text-input" name="@Model.About" placeholder="Text" class="form-control" required>@Model.About</textarea>
                             </div>
                         </div>
                         <div class="row form-group">
                             <div class="col col-md-3">
-                                <label for="text-input" class=" form-control-label">Text Input</label>
+                                <label for="text-input" class=" form-control-label">Mission</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="text" id="text-input" name="@Model.Misson" placeholder="Text" class="form-control" required>
-                                <small class="form-text text-muted">This is a help text</small>
+                                <textarea id="text-input" name="@Model.Mission"  placeholder="Text" class="form-control" required>@Model.Mission</textarea>
                             </div>
                         </div>
                         <div class="row form-group">
                             <div class="col col-md-3">
-                                <label for="text-input" class=" form-control-label">Text Input</label>
+                                <label for="text-input" class=" form-control-label">Reason</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="text" id="text-input" name="@Model.Reason" placeholder="Text" class="form-control" required>
-                                <small class="form-text text-muted">This is a help text</small>
+                                <textarea  id="text-input" name="@Model.Reason" placeholder="Text" class="form-control" required>@Model.Reason</textarea>
                             </div>
                         </div>
                         <div class="row form-group">
                             <div class="col col-md-3">
-                                <label for="file-multiple-input" class=" form-control-label">File input</label>
+                                <label for="file-multiple-input" class=" form-control-label">Logo</label>
                             </div>
                             <div class="col col-md-3">
                                 <img src="~/Uploads/@Model.Logo"/>

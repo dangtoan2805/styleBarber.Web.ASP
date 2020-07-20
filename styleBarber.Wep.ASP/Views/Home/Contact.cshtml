@@ -20,11 +20,11 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="contact_form">
-                    <p>Hello, @ViewBag.User.Name</p>
+                    <h4>Hello, @ViewBag.User.LastName @ViewBag.User.FirstName </h4>
                     <form action="/Home/SendContact" method="post">
                         <input type="hidden" value="@ViewBag.User.ID" name="UserID" />
                         <div class="form-group">
-                            <textarea class="form-control" name="Review" rows="4"></textarea>
+                            <textarea class="form-control" name="Review" rows="4" required></textarea>
                         </div>
                         <button type="submit" value="SEND" id="submit" class="btn btn-light btn-radius btn-brd grd1 btn-block subt">Liên Hệ</button>
                     </form>

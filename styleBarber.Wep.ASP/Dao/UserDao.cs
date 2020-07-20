@@ -19,7 +19,12 @@ namespace styleBarber.Wep.ASP.Dao
         {
             return _context.Users.Find(id);
         }
-        
+
+        public bool CheckEmail(string email)
+        {
+            return _context.Users.Where(item => item.Email==email).FirstOrDefault() == null;
+        }
+
         public User CheckUser(string email, string pass)
         {
             return _context.Users
@@ -33,13 +38,11 @@ namespace styleBarber.Wep.ASP.Dao
             _context.SaveChangesAsync();
         }
 
-        public void Update(User user)
+        public void Update(int id,string pass)
         {
-
+            var obj = _context.Users.Find(id);
+            if (obj != null)
+                obj.Password = pass;
         }
-
-
-
-
     }
 }

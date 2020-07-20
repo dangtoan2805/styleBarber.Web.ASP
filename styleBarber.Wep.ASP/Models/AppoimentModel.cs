@@ -29,7 +29,7 @@ namespace styleBarber.Wep.ASP.Models
                     .ForMember(des => des.Name, act => act.MapFrom(src => src.User.FirstName + " " + src.User.LastName))
                     .ForMember(des => des.Phone, act => act.MapFrom(src => src.User.Phone));
                 cfg.CreateMap<AppointmentVM, Appointment>()
-                    .ForMember(des => des.Date, act => act.MapFrom(src => Convert.ToDateTime(src.DateCheckOut + src.Time)));
+                    .ForMember(des => des.Date, act => act.MapFrom(src => Convert.ToDateTime(src.DateCheckOut +","+ src.Time)));
             }).CreateMapper();
         }
 
@@ -105,11 +105,30 @@ namespace styleBarber.Wep.ASP.Models
             return new List<string>()
             {
                 "8:00",
+                "8:30",
                 "9:00",
+                "9:30",
                 "10:00",
+                "10:30",
                 "11:00",
+                "11:30",
                 "12:00",
+                "12:30",
                 "13:00",
+                "13:30",
+                "14:00",
+                "14:30",
+                "15:00",
+                "15:30",
+                "16:00",
+                "16:30",
+                "17:00",
+                "17:30",
+                "18:00",
+                "18:30",
+                "19:00",
+                "19:30",
+                "20:00",
             };
         }
 
@@ -117,14 +136,16 @@ namespace styleBarber.Wep.ASP.Models
     public class AppointmentVM
     {
         public int ID { get; set; }
-        [Required(ErrorMessage ="ABADASD")]
+        [Required(ErrorMessage ="Please select Date CheckOut")]
         public string DateCheckOut { get; set; }
+        [Required(ErrorMessage = "Please select Time CheckOut")]
         public string Time { get; set; }
         public string Name { get; set; }
         public string Phone { get; set; }
         public string Note { get; set; }
         public bool Status { get; set; }
         public string BarberName { get; set; }
+        [Required(ErrorMessage = "Please select Barber")]
         public int BarberID { get; set; }
         public int UserID { get; set; }
     }

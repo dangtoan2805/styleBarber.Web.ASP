@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "ServiceDetail";
 }
-
+@model styleBarber.Wep.ASP.Models.ServiceVM
 <div class="main-content">
     <div class="section__content section__content--p30">
         <div class="container-fluid">
@@ -27,7 +27,8 @@
                                 <label for="text-input" class=" form-control-label">Tên</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="text" id="text-input" name="Name" class="form-control" value="@Model.Name">
+                                <input type="text" id="text-input" name="Name" class="form-control" value="@Model.Name" required>
+                                @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="row form-group">
@@ -43,7 +44,8 @@
                                 <label for="text-input" class=" form-control-label">Giá</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="text" id="text-input" name="Price" class="form-control" value="@Model.Price">
+                                <input type="text" id="text-input" name="Price" class="form-control" value="@Model.Price" required>
+                                @Html.ValidationMessageFor(m => m.Price, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="card-footer">

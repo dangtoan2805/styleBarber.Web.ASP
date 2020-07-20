@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "AddBarber";
 }
-
+@model styleBarber.Wep.ASP.Models.BarberVM
 <div class="main-content">
     <div class="section__content section__content--p30">
         <div class="container-fluid">
@@ -16,26 +16,22 @@
                                 <label for="file-input" class=" form-control-label">Hình Ảnh</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="file" id="file-input" name="Image" class="form-control-file" required>
+                                <input type="file" id="file-input" name="Image" class="form-control-file" required />
+                                @Html.ValidationMessageFor(m=> m.Image,"", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="row form-group">
                             <div class="col col-md-3">
-                                <label class=" form-control-label">Chức Vụ</label>
+                                <label class=" form-control-label">Người sáng lập</label>
                             </div>
                             <div class="col col-md-9">
                                 <div class="form-check">
                                     <div class="radio">
                                         <label for="radio1" class="form-check-label ">
-                                            <input type="radio" id="radio1" name="radios" value="option1" class="form-check-input">Người Sáng Lập
+                                            <input type="checkbox" id="radio1" name="radios" value="option1" class="form-check-input">
+                                            (*Là NV không chọn)
                                         </label>
                                     </div>
-                                    <div class="radio">
-                                        <label for="radio2" class="form-check-label ">
-                                            <input type="radio" id="radio2" name="radios" value="option2" class="form-check-input">Nhân Viên
-                                        </label>
-                                    </div>
-
                                 </div>
                             </div>
                         </div>
@@ -45,6 +41,7 @@
                             </div>
                             <div class="col-12 col-md-9">
                                 <input type="text" id="text-input" name="Name" class="form-control" required>
+                                @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="row form-group">
@@ -53,6 +50,7 @@
                             </div>
                             <div class="col-12 col-md-9">
                                 <textarea name="Info" id="textarea-input" rows="9" placeholder="Nhập Thông Tin..." class="form-control" required></textarea>
+                                @Html.ValidationMessageFor(m => m.Info, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="row form-group">
@@ -60,7 +58,7 @@
                                 <label for="email-input" class=" form-control-label">Facebook</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="email" id="email-input" name="LinkFB" placeholder="Nhâp Facebook" class="form-control" required>
+                                <input type="email" id="email-input" name="LinkFB" placeholder="Nhâp Facebook" class="form-control" >
                                 <small class="help-block form-text">Vui Lòng Nhập Facebook</small>
                             </div>
                         </div>
@@ -69,7 +67,7 @@
                                 <label for="email-input" class=" form-control-label" >Email</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="email" id="email-input" name="Email" placeholder="Nhập Email" class="form-control" required>
+                                <input type="email" id="email-input" name="Email" placeholder="Nhập Email" class="form-control" >
                                 <small class="help-block form-text">Vui Lòng Nhập email</small>
                             </div>
                         </div>
@@ -78,7 +76,7 @@
                                 <label for="email-input" class=" form-control-label">Twitter</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="email" id="email-input" name="Twitter" placeholder="Nhập Twitter" class="form-control" required>
+                                <input type="email" id="email-input" name="Twitter" placeholder="Nhập Twitter" class="form-control" >
                                 <small class="help-block form-text">Vui Lòng Nhập Twitter</small>
                             </div>
                         </div>

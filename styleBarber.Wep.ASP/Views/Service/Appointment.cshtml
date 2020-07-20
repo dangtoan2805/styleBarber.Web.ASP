@@ -18,37 +18,39 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="contact_form">
-                    <p>Hello, @ViewBag.User.Name</p>
+                    <h4>Hello, @ViewBag.User.LastName @ViewBag.User.FirstName </h4>
                     <form action="/Service/SendAppointment" method="post">
                         <div class="form-row">
                             <input type="hidden" value="@ViewBag.User.ID" name="UserID" />
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                @Html.ValidationMessageFor(model => model.DateCheckOut)
-                                <input type="date" name="DateCheckOut" id="DateCheckOut" class="form-control" value="@Model.DateCheckOut" placeholder="Thời Gian">
+                                <input type="date" name="DateCheckOut" id="DateCheckOut" class="form-control" value="@Model.DateCheckOut" placeholder="Thời Gian" required>
+                                @Html.ValidationMessageFor(model => model.DateCheckOut, "", new { @class = "text-danger" })
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <select id="Time" class="form-control" name="Time">
-                                    <option value="Time">Chọn Thời Gian</option>
+                                <select id="Time" class="form-control" name="Time" required>
+                                    <option value="Time">- Chọn Thời Gian -</option>
                                     @foreach (var item in ViewBag.Times)
                                     {
                                         <option value="@item">@item</option>
                                     }
                                 </select>
+                                @Html.ValidationMessageFor(model => model.DateCheckOut, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="col-12">
-                                <select id="BarberID" class="form-control" name="BarberID">
-                                    <option value="">Chọn Barber</option>
+                                <select id="BarberID" class="form-control" name="BarberID" required>
+                                    <option value=""> - Chọn Barber - </option>
                                     @foreach (var item in ViewBag.Barber)
                                     {
                                         <option value="@item.ID">@item.Name</option>
                                     }
                                 </select>
+                                @Html.ValidationMessageFor(model => model.DateCheckOut, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" name="Note" id="Note" rows="3" placeholder="Cung cấp cho chúng tôi thêm chi tiết..">@Model.Note</textarea>
+                            <textarea class="form-control" name="Note" id="Note" rows="3" placeholder="Cung cấp cho chúng tôi thêm chi tiết.." required>@Model.Note</textarea>
                         </div>
                         <div class="form-btn text-center">
                             <button type="submit" value="SEND" id="submit" class="btn btn-light btn-radius btn-brd grd1 btn-block subt">Đặt Lịch</button>

@@ -10,32 +10,43 @@
             <div class="row align-items-center">
                 <form class="mx-auto" action="/Account/Register" method="post">
                     <div class="form-group">
-                        <label for="Name">Email address</label>
-                        <input type="email" class="form-control" id="Name" name="Name" placeholder="Enter email">
+                        <label for="FistName">First Name</label>
+                        <input type="text" class="form-control" id="FirstName" name="FirstName" required>
+                        @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
                     </div>
                     <div class="form-group">
-                        <label for="Email">Email address</label>
-                        <input type="email" class="form-control" id="Email" name="Email" placeholder="Enter email">
+                        <label for="LastName">Last Name</label>
+                        <input type="text" class="form-control" id="LastName" name="LastName" required>
+                        @Html.ValidationMessageFor(m => m.LastName, "", new { @class="text-danger"})
+                    </div>
+                    <div class="form-group">
+                        <label for="Email">Email </label>
+                        <input type="email" class="form-control" id="Email" name="Email" required>
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        @Html.ValidationMessage("Exists", new { @class = "text-danger" })
+
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                        <input type="password" class="form-control" id="password" name="password" required>
+                        @Html.ValidationMessage("PassCorrect", new { @class = "text-danger" })
                     </div>
                     <div class="form-group">
                         <label for="re_password">Re-Password</label>
-                        <input type="password" class="form-control" id="re_password" name="re_password" placeholder="Password">
+                        <input type="password" class="form-control" id="re_password" name="re_password" required>
                     </div>
                     <div class="form-group">
                         <label for="Phone">Phone</label>
-                        <input type="tel" class="form-control" id="Phone" name="Phone" placeholder="Enter email">
+                        <input type="tel" class="form-control" id="Phone" name="Phone" required>
+                        @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
                     </div>
                     <div class="form-group">
                         <label for="Job">Job</label>
-                        <input type="text" class="form-control" id="Job" name="Job" placeholder="Enter email">
+                        <input type="text" class="form-control" id="Job" name="Job" >
                     </div>
                     <div class="form-group">
                         <label for="Image">Image</label>
-                        <input type="file" class="form-control" id="File" name="File" placeholder="Enter email">
+                        <input type="file" class="form-control" id="File" name="File">
                     </div>
                     <button type="submit" class="btn btn-primary w-100">Sign Up</button>
                 </form>

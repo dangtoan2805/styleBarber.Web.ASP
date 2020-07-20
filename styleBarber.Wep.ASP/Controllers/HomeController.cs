@@ -60,7 +60,6 @@ namespace styleBarber.Wep.ASP.Controllers
             return View();
         }
 
-
         public ActionResult SendContact(ContactVM contact)
         {
             if (!HttpContext.User.Identity.IsAuthenticated)
